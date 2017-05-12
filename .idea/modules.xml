@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../pds2-financeira1/.idea/pds2-financeira1.iml" filepath="$PROJECT_DIR$/../pds2-financeira1/.idea/pds2-financeira1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../quickstart/.idea/quickstart.iml" filepath="$PROJECT_DIR$/../quickstart/.idea/quickstart.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/template.iml" filepath="$PROJECT_DIR$/.idea/template.iml" />
     </modules>
   </component>

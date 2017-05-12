@@ -9,38 +9,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var user_service_1 = require("./user.service");
 var router_1 = require("@angular/router");
+require('rxjs/add/operator/switchMap');
+var user_service_1 = require('../user/user.service');
 var common_1 = require('@angular/common');
-var UserComponent = (function () {
-    function UserComponent(usuarioService, route, location, router) {
+var UsuarioDetalhesComponent = (function () {
+    function UsuarioDetalhesComponent(usuarioService, route, location) {
         this.usuarioService = usuarioService;
         this.route = route;
         this.location = location;
-        this.router = router;
+        this.usuario = null;
     }
     ;
-    UserComponent.prototype.ngOnInit = function () {
+    UsuarioDetalhesComponent.prototype.ngOnInit = function () {
         var _this = this;
-        // // $.getScript('../../../assets/js/material-dashboard.js');
+        // $.getScript('../../../assets/js/material-dashboard.js');
         this.route.params
-            .switchMap(function (params) { return _this.usuarioService.getUsuarios(); })
-            .subscribe(function (usuarios) { return _this.usuarios = usuarios; });
+            .switchMap(function (params) { return _this.usuarioService.getUsuario(+params['id']); })
+            .subscribe(function (usuario) { return _this.usuario = usuario; });
     };
-    UserComponent.prototype.editarUsuario = function (idUsuario) {
-        this.router.navigate(['/usuario-detalhes', idUsuario]);
+    UsuarioDetalhesComponent.prototype.goBack = function () {
+        this.location.back();
     };
-    UserComponent = __decorate([
+    UsuarioDetalhesComponent = __decorate([
         core_1.Component({
-            selector: 'user-cmp',
+            selector: 'usuario-detalhes',
             moduleId: module.id,
-            templateUrl: 'user.component.html',
-            providers: [user_service_1.UsuarioService],
-            styleUrls: ['user.component.css']
+            templateUrl: 'usuario-detalhes.component.html',
+            providers: [user_service_1.UsuarioService]
         }), 
-        __metadata('design:paramtypes', [user_service_1.UsuarioService, router_1.ActivatedRoute, common_1.Location, router_1.Router])
-    ], UserComponent);
-    return UserComponent;
+        __metadata('design:paramtypes', [user_service_1.UsuarioService, router_1.ActivatedRoute, common_1.Location])
+    ], UsuarioDetalhesComponent);
+    return UsuarioDetalhesComponent;
 }());
-exports.UserComponent = UserComponent;
-//# sourceMappingURL=user.component.js.map
+exports.UsuarioDetalhesComponent = UsuarioDetalhesComponent;
+//# sourceMappingURL=usuario-detalhes.component.js.map

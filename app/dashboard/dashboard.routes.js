@@ -6,7 +6,7 @@ var table_component_1 = require('./table/table.component');
 var notifications_component_1 = require('./notifications/notifications.component');
 var typography_component_1 = require('./typography/typography.component');
 var maps_component_1 = require('./maps/maps.component');
-var upgrade_component_1 = require('./upgrade/upgrade.component');
+var usuario_detalhes_component_1 = require('./usuario-detalhes/usuario-detalhes.component');
 exports.MODULE_ROUTES = [
     { path: 'dashboard', component: home_component_1.HomeComponent },
     { path: 'user', component: user_component_1.UserComponent },
@@ -15,7 +15,7 @@ exports.MODULE_ROUTES = [
     { path: 'notifications', component: notifications_component_1.NotificationsComponent },
     { path: 'typography', component: typography_component_1.TypographyComponent },
     { path: 'maps', component: maps_component_1.MapsComponent },
-    { path: 'upgrade', component: upgrade_component_1.UpgradeComponent },
+    { path: 'usuario-detalhes/:id', component: usuario_detalhes_component_1.UsuarioDetalhesComponent },
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
 ];
 exports.MODULE_COMPONENTS = [
@@ -26,6 +26,6 @@ exports.MODULE_COMPONENTS = [
     notifications_component_1.NotificationsComponent,
     typography_component_1.TypographyComponent,
     maps_component_1.MapsComponent,
-    upgrade_component_1.UpgradeComponent
+    usuario_detalhes_component_1.UsuarioDetalhesComponent
 ];
 //# sourceMappingURL=dashboard.routes.js.map

@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
+var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
 var dashboard_component_1 = require('./dashboard/dashboard.component');
 var dashboard_module_1 = require('./dashboard/dashboard.module');
@@ -28,6 +29,7 @@ var AppModule = (function () {
                 dashboard_module_1.DashboardModule,
                 sidebar_module_1.SidebarModule,
                 navbar_module_1.NavbarModule,
+                http_1.HttpModule,
                 footer_module_1.FooterModule,
                 router_1.RouterModule.forRoot([])
             ],
