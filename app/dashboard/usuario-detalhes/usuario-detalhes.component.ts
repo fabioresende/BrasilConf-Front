@@ -4,6 +4,8 @@ import 'rxjs/add/operator/switchMap';
 import {UsuarioService} from '../user/user.service';
 import {Usuario} from "../user/Usuario";
 import {Location} from '@angular/common';
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+
 @Component({
     selector: 'usuario-detalhes',
     moduleId: module.id,
@@ -14,8 +16,7 @@ import {Location} from '@angular/common';
 export class UsuarioDetalhesComponent implements OnInit {
     private usuario: Usuario;
     private usuarioSelecionado: boolean;
-
-    constructor(private usuarioService: UsuarioService, private route: ActivatedRoute,private location: Location) {
+    constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private location: Location) {
         this.usuario = null;
     };
 
@@ -24,10 +25,14 @@ export class UsuarioDetalhesComponent implements OnInit {
         this.route.params
             .switchMap((params: Params) => this.usuarioService.getUsuario(+params['id']))
             .subscribe(usuario => this.usuario = usuario);
-
     }
 
     goBack(): void {
         this.location.back();
+    }
+
+    salvarUsuario(event): void {
+        console.log(this.usuario);
+        event.preventDefault();
     }
 }
