@@ -1562,13 +1562,13 @@ h2.title {
 @keyframes color {
   100%,
   0% {
-    stroke: #9c27b0;
+    stroke: #3b5998;
   }
   50% {
-    stroke: #ff9800;
+    stroke: #3b5998;
   }
   100% {
-    stroke: #9c27b0;
+    stroke: #3b5998;
   }
 }
 body {
@@ -5507,3 +5507,18 @@ footer .btn {
     margin-right: -20px;
   }
 }
+ .btn-float-right{
+   position: relative;
+   float: right;
+   right: 0px;
+ }
+ .btn-tranparent{
+   background-color: rgba(255,255,255,0);
+   border: 1px solid white;
+
+ }
+ .btn-tranparent:hover{
+   background-color: rgba(255,255,255,0.3);
+   border: 1px solid white;
+
+ }

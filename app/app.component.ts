@@ -6,7 +6,7 @@ declare var $:any;
 @Component({
     selector: 'my-app',
     moduleId: module.id,
-    templateUrl: 'app.component.html'
+    templateUrl: 'app.component.html',
 })
 
 export class AppComponent implements OnInit{

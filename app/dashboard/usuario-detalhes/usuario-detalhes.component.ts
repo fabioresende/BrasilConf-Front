@@ -4,7 +4,7 @@ import 'rxjs/add/operator/switchMap';
 import {UsuarioService} from '../user/user.service';
 import {Usuario} from "../user/Usuario";
 import {Location} from '@angular/common';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
     selector: 'usuario-detalhes',
@@ -14,25 +14,63 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 })
 
 export class UsuarioDetalhesComponent implements OnInit {
+    private formulario: FormGroup;
     private usuario: Usuario;
-    private usuarioSelecionado: boolean;
-    constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private location: Location) {
+    private usuarioSelecionado;
+    private tiposUsuario;
+    public events: any[] = [];
+
+    constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private location: Location, private fb: FormBuilder) {
         this.usuario = null;
+        this.usuarioSelecionado = this.routerParams(this.location.path());
     };
 
     ngOnInit() {
-        // $.getScript('../../../assets/js/material-dashboard.js');
-        this.route.params
-            .switchMap((params: Params) => this.usuarioService.getUsuario(+params['id']))
-            .subscribe(usuario => this.usuario = usuario);
+        if (this.usuarioSelecionado != 0) {
+            this.route.params
+                .switchMap((params: Params) => this.usuarioService.getUsuario(+params['id']))
+                .subscribe(usuario => this.usuario = usuario);
+        }
+        else {
+            this.usuario = new Usuario();
+        }
+        this.formulario = new FormGroup({
+            nome: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
+            cpf: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
+            telefone: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
+            usuario: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
+            senha: new FormControl('', [<any>Validators.minLength(8)]),
+        });
+
+        this.buscarTiposUsuarios();
     }
 
     goBack(): void {
         this.location.back();
     }
 
-    salvarUsuario(event): void {
-        console.log(this.usuario);
-        event.preventDefault();
+    salvarUsuario(usuario: Usuario, isValid: boolean): void {
+        console.log(usuario, isValid);
+        if (isValid) {
+            this.usuarioService.salvarUsuario(usuario);
+        }
+    }
+
+    buscarTiposUsuarios() {
+        this.tiposUsuario = this.usuarioService.buscarTiposUsuario();
+    }
+
+    // subcribeToFormChanges() {
+    //     const formularioChange$ = this.formulario.statusChanges;
+    //     const formularioValueChanges$ = this.formulario.valueChanges;
+    //
+    //     formularioChange$.subscribe(x => this.events.push({ event: 'STATUS_CHANGED', object: x }));
+    //     formularioValueChanges$.subscribe(x => this.events.push({ event: 'VALUE_CHANGED', object: x }));
+    // }
+
+    routerParams(params: string): string {
+        var parametros = params.split("/");
+        var parametro = parametros[2];
+        return parametro;
     }
 }

@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" data-background-color="red">
-                        <button class="btn btn-float-right btn-tranparent" [routerLink]="['/usuario-detalhes',1]" ngModel="usuarioSelecionado = false">
+                        <button class="btn btn-float-right btn-tranparent" [routerLink]="['/usuario-detalhes',0]">
                             <i data-notify="icon" class="material-icons">add</i>
                             CADASTRAR USUÁRIO
                         </button>
@@ -29,8 +29,9 @@
                                 <td class="col-md-2">{{usuario.tipo_usuario}}</td>
                                 <td class="col-md-2">{{usuario.status}}</td>
                                 <td class="col-md-2">
-                                    <button class="btn btn-success btn-xs" (click)="editarUsuario(usuario.id)">
-                                        <i data-notify="icon" class="material-icons">edit_mod</i>
+                                    <button class="btn btn-success btn-sm" (click)="editarUsuario(usuario.id)">
+                                        <i data-notify="icon" class="material-icons">create</i>
+                                        Editar
                                     </button>
                                 </td>
                             </tr>

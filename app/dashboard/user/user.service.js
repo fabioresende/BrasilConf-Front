@@ -15,6 +15,7 @@ var UsuarioService = (function () {
     function UsuarioService(http) {
         this.http = http;
         this.URLBASE = 'http://localhost:8000/api';
+        this.teste = null;
     }
     UsuarioService.prototype.getUsuarios = function () {
         return this.http.get(this.URLBASE + "/usuarios")
@@ -23,9 +24,20 @@ var UsuarioService = (function () {
     };
     ;
     UsuarioService.prototype.getUsuario = function (idUsuario) {
-        return this.http.get(this.URLBASE + "/usuario/" + idUsuario)
+        return this.http.get(this.URLBASE + "/usuario/buscar/" + idUsuario)
             .toPromise()
             .then(function (response) { return response.json(); });
+    };
+    UsuarioService.prototype.salvarUsuario = function (usuario) {
+        return this.http.post(this.URLBASE + "/usuario/salvar", usuario)
+            .toPromise()
+            .then(function (response) { return response.json(); });
+    };
+    UsuarioService.prototype.buscarTiposUsuario = function () {
+        var teste = this.http.get(this.URLBASE + "/usuario/tipo-usuarios")
+            .toPromise()
+            .then(function (response) { return response.json().value; });
+        console.log(teste);
     };
     UsuarioService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only

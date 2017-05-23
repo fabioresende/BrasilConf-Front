@@ -16,7 +16,7 @@ var DashboardComponent = (function () {
         core_1.Component({
             selector: 'dashboard-cmp',
             moduleId: module.id,
-            templateUrl: 'dashboard.component.html'
+            templateUrl: 'dashboard.component.html',
         }), 
         __metadata('design:paramtypes', [])
     ], DashboardComponent);
