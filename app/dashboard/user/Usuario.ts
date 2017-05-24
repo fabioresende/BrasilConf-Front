@@ -6,4 +6,5 @@ export class Usuario {
     cpf: string;
     telefone: string;
     status:boolean;
+    id_tipo_usuario: number;
 }

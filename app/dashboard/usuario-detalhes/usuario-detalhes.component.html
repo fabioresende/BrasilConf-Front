@@ -15,7 +15,7 @@
                         <form *ngIf="usuario" [formGroup]="formulario" novalidate (ngSubmit)="salvarUsuario(formulario.value, formulario.valid)">
                             <div class="row">
                                 <div class="col-md-5">
-                                    <div class="form-group form-black label-floating">
+                                    <div class="form-group form-black ">
                                         <label class="control-label" for="nome">Nome</label>
                                         <input type="text" class="form-control"  formControlName="nome" id="nome" [ngModel]="usuario.nome">
                                         <small [hidden]="formulario.controls.nome.valid || (formulario.controls.nome.pristine)" class="text-danger">
@@ -24,13 +24,13 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group form-black label-floating">
+                                    <div class="form-group form-black ">
                                         <label class="control-label">CPF</label>
                                         <input type="text" class="form-control" formControlName="cpf" [ngModel]="usuario.cpf">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="form-group form-black label-floating">
+                                    <div class="form-group form-black ">
                                         <label class="control-label">Telefone</label>
                                         <input type="text" class="form-control" formControlName="telefone" [ngModel]="usuario.telefone">
                                     </div>
@@ -39,22 +39,22 @@
 
                             <div class="row">
                                 <div class="col-md-5">
-                                    <div class="form-group form-black label-floating">
+                                    <div class="form-group form-black ">
                                         <label class="control-label">Usuario</label>
                                         <input type="text" class="form-control" formControlName="usuario" [ngModel]="usuario.usuario">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group form-black label-floating">
+                                    <div class="form-group form-black ">
                                         <label class="control-label">Senha</label>
                                         <input type="password" class="form-control" formControlName="senha" [ngModel]="usuario.senha">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="form-group form-black label-floating">
+                                    <div class="form-group form-black ">
                                         <label for="selectTipoUsuario" class="control-label">Área</label>
-                                        <select class="form-control" id="selectTipoUsuario">
-                                            <option >a</option>
+                                        <select class="form-control" id="selectTipoUsuario" formControlName="id_tipo_usuario" [value]="descricaoTipoUsuario" >
+                                            <option *ngFor="let tipoUsuario of tiposUsuario">{{tipoUsuario}}</option>
                                         </select>
                                     </div>
                                 </div>

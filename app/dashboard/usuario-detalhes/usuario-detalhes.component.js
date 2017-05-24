@@ -24,6 +24,7 @@ var UsuarioDetalhesComponent = (function () {
         this.events = [];
         this.usuario = null;
         this.usuarioSelecionado = this.routerParams(this.location.path());
+        this.tiposUsuario;
     }
     ;
     UsuarioDetalhesComponent.prototype.ngOnInit = function () {
@@ -42,6 +43,7 @@ var UsuarioDetalhesComponent = (function () {
             telefone: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(5)]),
             usuario: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(5)]),
             senha: new forms_1.FormControl('', [forms_1.Validators.minLength(8)]),
+            id_tipo_usuario: new forms_1.FormControl('')
         });
         this.buscarTiposUsuarios();
     };
@@ -49,21 +51,22 @@ var UsuarioDetalhesComponent = (function () {
         this.location.back();
     };
     UsuarioDetalhesComponent.prototype.salvarUsuario = function (usuario, isValid) {
-        console.log(usuario, isValid);
+        this.usuario = usuario;
+        this.setTipoUsuario(usuario);
         if (isValid) {
-            this.usuarioService.salvarUsuario(usuario);
+            this.usuarioService.salvarUsuario(this.usuario);
         }
     };
     UsuarioDetalhesComponent.prototype.buscarTiposUsuarios = function () {
-        this.tiposUsuario = this.usuarioService.buscarTiposUsuario();
+        var _this = this;
+        this.usuarioService.buscarTiposUsuario().then(function (data) {
+            _this.tiposUsuario = data;
+            _this.descricaoTipoUsuario = _this.tiposUsuario[_this.usuario.id_tipo_usuario];
+        });
     };
-    // subcribeToFormChanges() {
-    //     const formularioChange$ = this.formulario.statusChanges;
-    //     const formularioValueChanges$ = this.formulario.valueChanges;
-    //
-    //     formularioChange$.subscribe(x => this.events.push({ event: 'STATUS_CHANGED', object: x }));
-    //     formularioValueChanges$.subscribe(x => this.events.push({ event: 'VALUE_CHANGED', object: x }));
-    // }
+    UsuarioDetalhesComponent.prototype.setTipoUsuario = function (usuario) {
+        this.usuario.id_tipo_usuario = this.tiposUsuario.indexOf(usuario.id_tipo_usuario);
+    };
     UsuarioDetalhesComponent.prototype.routerParams = function (params) {
         var parametros = params.split("/");
         var parametro = parametros[2];

@@ -34,10 +34,9 @@ var UsuarioService = (function () {
             .then(function (response) { return response.json(); });
     };
     UsuarioService.prototype.buscarTiposUsuario = function () {
-        var teste = this.http.get(this.URLBASE + "/usuario/tipo-usuarios")
+        return this.http.get(this.URLBASE + "/usuario/tipo-usuarios")
             .toPromise()
-            .then(function (response) { return response.json().value; });
-        console.log(teste);
+            .then(function (response) { return response.json(); });
     };
     UsuarioService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only

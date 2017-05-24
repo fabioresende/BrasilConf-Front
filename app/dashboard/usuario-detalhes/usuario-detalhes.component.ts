@@ -18,11 +18,13 @@ export class UsuarioDetalhesComponent implements OnInit {
     private usuario: Usuario;
     private usuarioSelecionado;
     private tiposUsuario;
+    private descricaoTipoUsuario;
     public events: any[] = [];
 
     constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private location: Location, private fb: FormBuilder) {
         this.usuario = null;
         this.usuarioSelecionado = this.routerParams(this.location.path());
+        this.tiposUsuario;
     };
 
     ngOnInit() {
@@ -40,8 +42,8 @@ export class UsuarioDetalhesComponent implements OnInit {
             telefone: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
             usuario: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
             senha: new FormControl('', [<any>Validators.minLength(8)]),
+            id_tipo_usuario: new FormControl('')
         });
-
         this.buscarTiposUsuarios();
     }
 
@@ -50,23 +52,23 @@ export class UsuarioDetalhesComponent implements OnInit {
     }
 
     salvarUsuario(usuario: Usuario, isValid: boolean): void {
-        console.log(usuario, isValid);
+        this.usuario = usuario;
+        this.setTipoUsuario(usuario);
         if (isValid) {
-            this.usuarioService.salvarUsuario(usuario);
+            this.usuarioService.salvarUsuario(this.usuario);
         }
     }
 
     buscarTiposUsuarios() {
-        this.tiposUsuario = this.usuarioService.buscarTiposUsuario();
+        this.usuarioService.buscarTiposUsuario().then((data) => {
+            this.tiposUsuario = data;
+            this.descricaoTipoUsuario = this.tiposUsuario[this.usuario.id_tipo_usuario];
+        });
     }
 
-    // subcribeToFormChanges() {
-    //     const formularioChange$ = this.formulario.statusChanges;
-    //     const formularioValueChanges$ = this.formulario.valueChanges;
-    //
-    //     formularioChange$.subscribe(x => this.events.push({ event: 'STATUS_CHANGED', object: x }));
-    //     formularioValueChanges$.subscribe(x => this.events.push({ event: 'VALUE_CHANGED', object: x }));
-    // }
+    setTipoUsuario(usuario) {
+        this.usuario.id_tipo_usuario = this.tiposUsuario.indexOf(usuario.id_tipo_usuario);
+    }
 
     routerParams(params: string): string {
         var parametros = params.split("/");

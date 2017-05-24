@@ -30,10 +30,9 @@ export class UsuarioService {
     }
 
     buscarTiposUsuario(){
-       var teste = this.http.get(this.URLBASE + "/usuario/tipo-usuarios")
+       return this.http.get(this.URLBASE + "/usuario/tipo-usuarios")
             .toPromise()
-            .then(response => response.json().value as Array<String>);
-       console.log(teste);
+            .then(response => response.json());
     }
 
     private handleError(error: any): Promise<any> {
