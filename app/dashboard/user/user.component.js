@@ -12,9 +12,11 @@ var core_1 = require('@angular/core');
 var user_service_1 = require("./user.service");
 var router_1 = require("@angular/router");
 var common_1 = require('@angular/common');
+var auth_service_1 = require("../autentication/auth.service");
 var UserComponent = (function () {
-    function UserComponent(usuarioService, route, location, router) {
+    function UserComponent(usuarioService, authService, route, location, router) {
         this.usuarioService = usuarioService;
+        this.authService = authService;
         this.route = route;
         this.location = location;
         this.router = router;
@@ -26,6 +28,8 @@ var UserComponent = (function () {
         this.route.params
             .switchMap(function (params) { return _this.usuarioService.getUsuarios(); })
             .subscribe(function (usuarios) { return _this.usuarios = usuarios; });
+        this.authService.login("fabioresendeb@gmail.com", "123456");
+        this.authService.loggedIn();
     };
     UserComponent.prototype.editarUsuario = function (idUsuario) {
         this.router.navigate(['/usuario-detalhes', idUsuario]);
@@ -35,10 +39,10 @@ var UserComponent = (function () {
             selector: 'user-cmp',
             moduleId: module.id,
             templateUrl: 'user.component.html',
-            providers: [user_service_1.UsuarioService],
+            providers: [user_service_1.UsuarioService, auth_service_1.AuthService],
             styleUrls: ['user.component.css']
         }), 
-        __metadata('design:paramtypes', [user_service_1.UsuarioService, router_1.ActivatedRoute, common_1.Location, router_1.Router])
+        __metadata('design:paramtypes', [user_service_1.UsuarioService, auth_service_1.AuthService, router_1.ActivatedRoute, common_1.Location, router_1.Router])
     ], UserComponent);
     return UserComponent;
 }());

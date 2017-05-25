@@ -14,6 +14,8 @@ var dashboard_routes_1 = require('./dashboard.routes');
 var http_1 = require("@angular/http");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
+var auth_service_1 = require("./autentication/auth.service");
+var angular2_jwt_1 = require("angular2-jwt");
 var DashboardModule = (function () {
     function DashboardModule() {
     }
@@ -28,6 +30,19 @@ var DashboardModule = (function () {
             declarations: [
                 dashboard_routes_1.MODULE_COMPONENTS
             ],
+            providers: [
+                auth_service_1.AuthService,
+                angular2_jwt_1.AuthHttp,
+                angular2_jwt_1.JwtHelper,
+                angular2_jwt_1.provideAuth({
+                    headerName: 'Authorization',
+                    headerPrefix: 'bearer',
+                    tokenName: 'token',
+                    tokenGetter: (function () { return localStorage.getItem('id_token'); }),
+                    globalHeaders: [{ 'Content-Type': 'application/json' }],
+                    noJwtError: true
+                })
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], DashboardModule);
