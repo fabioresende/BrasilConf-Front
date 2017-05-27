@@ -24,7 +24,7 @@ var AuthService = (function () {
     AuthService.prototype.login = function (email, senha) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.http.post(_this.URLBASE + '/auth/login', 'usuario=' + email + '&senha=' + senha, {
+            _this.http.post('/auth/login', 'usuario=' + email + '&senha=' + senha, {
                 headers: _this.headers
             }).subscribe(function (res) {
                 localStorage.setItem('id_token', res.json().access_token);

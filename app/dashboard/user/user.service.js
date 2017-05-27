@@ -14,27 +14,26 @@ require('rxjs/add/operator/toPromise');
 var UsuarioService = (function () {
     function UsuarioService(http) {
         this.http = http;
-        this.URLBASE = 'http://localhost:8000/api';
         this.teste = null;
     }
     UsuarioService.prototype.getUsuarios = function () {
-        return this.http.get(this.URLBASE + "/usuarios")
+        return this.http.get("/usuarios")
             .toPromise()
             .then(function (response) { return response.json(); });
     };
     ;
     UsuarioService.prototype.getUsuario = function (idUsuario) {
-        return this.http.get(this.URLBASE + "/usuario/buscar/" + idUsuario)
+        return this.http.get("/usuario/buscar/" + idUsuario)
             .toPromise()
             .then(function (response) { return response.json(); });
     };
     UsuarioService.prototype.salvarUsuario = function (usuario) {
-        return this.http.post(this.URLBASE + "/usuario/salvar", usuario)
+        return this.http.post("/usuario/salvar", usuario)
             .toPromise()
             .then(function (response) { return response.json(); });
     };
     UsuarioService.prototype.buscarTiposUsuario = function () {
-        return this.http.get(this.URLBASE + "/usuario/tipo-usuarios")
+        return this.http.get("/usuario/tipo-usuarios")
             .toPromise()
             .then(function (response) { return response.json(); });
     };

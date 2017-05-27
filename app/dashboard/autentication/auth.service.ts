@@ -16,7 +16,7 @@ export class AuthService {
     login(email: string, senha: string) {
         return new Promise((resolve, reject) => {
             this.http.post(
-                this.URLBASE + '/auth/login',
+                '/auth/login',
                 'usuario=' + email + '&senha=' + senha,
                 {
                     headers: this.headers
