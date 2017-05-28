@@ -18,7 +18,6 @@ var AuthService = (function () {
         this.authHttp = authHttp;
         this.jwtHelper = new angular2_jwt_1.JwtHelper();
         this.headers = new http_1.Headers;
-        this.URLBASE = 'http://localhost:8000/api';
         this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
     }
     AuthService.prototype.login = function (email, senha) {
@@ -35,8 +34,8 @@ var AuthService = (function () {
             });
         });
     };
-    AuthService.prototype.getEmailUserLogged = function () {
-        this.authHttp.get('http://localhost:8080/token')
+    AuthService.prototype.getIdUserLogged = function () {
+        return this.authHttp.get('auth/user')
             .subscribe(function (data) {
             console.log(data);
             localStorage.setItem('id_token', data.json().token);

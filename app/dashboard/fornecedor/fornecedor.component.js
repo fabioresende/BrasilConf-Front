@@ -15,27 +15,24 @@ var fornecedor_service_1 = require('./fornecedor.service');
 var Fornecedor_1 = require("./Fornecedor");
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
-var UsuarioDetalhesComponent = (function () {
-    function UsuarioDetalhesComponent(FornecedorService, route, location, fb) {
-        this.FornecedorService = FornecedorService;
+var auth_service_1 = require('../autentication/auth.service');
+var FornecedorComponent = (function () {
+    function FornecedorComponent(fornecedorService, route, location, fb, authService) {
+        this.fornecedorService = fornecedorService;
         this.route = route;
         this.location = location;
         this.fb = fb;
+        this.authService = authService;
         this.events = [];
         this.fornecedor = null;
         this.fornecedorSelecionado = 1;
     }
     ;
-    UsuarioDetalhesComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        if (this.fornecedorSelecionado != 0) {
-            this.route.params
-                .switchMap(function (params) { return _this.FornecedorService.getFornecedor(+params['id']); })
-                .subscribe(function (fornecedor) { return _this.fornecedor = fornecedor; });
+    FornecedorComponent.prototype.ngOnInit = function () {
+        if (this.usuarioLogado) {
+            this.fornecedorService.getFornecedor(0);
         }
-        else {
-            this.fornecedor = new Fornecedor_1.Fornecedor();
-        }
+        this.fornecedor = new Fornecedor_1.Fornecedor();
         this.formulario = new forms_1.FormGroup({
             nome: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(5)]),
             cnpj: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(5)]),
@@ -48,24 +45,27 @@ var UsuarioDetalhesComponent = (function () {
             url_logo: new forms_1.FormControl('', [forms_1.Validators.required]),
         });
     };
-    UsuarioDetalhesComponent.prototype.goBack = function () {
+    FornecedorComponent.prototype.goBack = function () {
         this.location.back();
     };
-    UsuarioDetalhesComponent.prototype.salvarFornecedor = function (fornecedor, isValid) {
+    FornecedorComponent.prototype.salvarFornecedor = function (fornecedor, isValid) {
         if (isValid) {
-            this.FornecedorService.salvarFornecedor(fornecedor);
+            this.fornecedorService.salvarFornecedor(fornecedor);
         }
     };
-    UsuarioDetalhesComponent = __decorate([
+    FornecedorComponent.prototype.buscarUsuarioLogado = function () {
+        var idUsuarioLogado = this.authService.getIdUserLogged();
+    };
+    FornecedorComponent = __decorate([
         core_1.Component({
             selector: 'fornecedor',
             moduleId: module.id,
             templateUrl: 'fornecedor.component.html',
-            providers: [fornecedor_service_1.FornecedorService]
+            providers: [fornecedor_service_1.FornecedorService, auth_service_1.AuthService]
         }), 
-        __metadata('design:paramtypes', [fornecedor_service_1.FornecedorService, router_1.ActivatedRoute, common_1.Location, forms_1.FormBuilder])
-    ], UsuarioDetalhesComponent);
-    return UsuarioDetalhesComponent;
+        __metadata('design:paramtypes', [fornecedor_service_1.FornecedorService, router_1.ActivatedRoute, common_1.Location, forms_1.FormBuilder, auth_service_1.AuthService])
+    ], FornecedorComponent);
+    return FornecedorComponent;
 }());
-exports.UsuarioDetalhesComponent = UsuarioDetalhesComponent;
+exports.FornecedorComponent = FornecedorComponent;
 //# sourceMappingURL=fornecedor.component.js.map

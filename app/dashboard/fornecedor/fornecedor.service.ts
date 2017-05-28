@@ -9,8 +9,8 @@ export class FornecedorService {
     private URLBASE = 'http://localhost:8000/api';
     constructor(private http: Http) {
     }
-    getFornecedor(idFornecedor: number): Promise<Fornecedor> {
-        return this.http.get(this.URLBASE + "/fornecedor/buscar/" + idFornecedor)
+    getFornecedor(idUsuario: number): Promise<Fornecedor> {
+        return this.http.get(this.URLBASE + "/fornecedor/buscar/" + idUsuario)
             .toPromise()
             .then(response => response.json() as Fornecedor);
     }

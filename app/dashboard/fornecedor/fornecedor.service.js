@@ -16,8 +16,8 @@ var FornecedorService = (function () {
         this.http = http;
         this.URLBASE = 'http://localhost:8000/api';
     }
-    FornecedorService.prototype.getFornecedor = function (idFornecedor) {
-        return this.http.get(this.URLBASE + "/fornecedor/buscar/" + idFornecedor)
+    FornecedorService.prototype.getFornecedor = function (idUsuario) {
+        return this.http.get(this.URLBASE + "/fornecedor/buscar/" + idUsuario)
             .toPromise()
             .then(function (response) { return response.json(); });
     };

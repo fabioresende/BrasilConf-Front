@@ -5,34 +5,34 @@ import {FornecedorService} from './fornecedor.service';
 import {Fornecedor} from "./Fornecedor";
 import {Location} from '@angular/common';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
-
+import {AuthService} from '../autentication/auth.service';
 @Component({
     selector: 'fornecedor',
     moduleId: module.id,
     templateUrl: 'fornecedor.component.html',
-    providers: [FornecedorService]
+    providers: [FornecedorService,AuthService]
 })
 
-export class UsuarioDetalhesComponent implements OnInit {
+export class FornecedorComponent implements OnInit {
     private formulario: FormGroup;
     private fornecedor: Fornecedor;
     private fornecedorSelecionado;
     public events: any[] = [];
+    public usuarioLogado ;
+    constructor(private fornecedorService: FornecedorService,
+                private route: ActivatedRoute,
+                private location: Location,
+                private fb: FormBuilder,private authService:AuthService) {
 
-    constructor(private FornecedorService: FornecedorService, private route: ActivatedRoute, private location: Location, private fb: FormBuilder) {
         this.fornecedor = null;
         this.fornecedorSelecionado = 1;
     };
 
     ngOnInit() {
-        if (this.fornecedorSelecionado != 0) {
-            this.route.params
-                .switchMap((params: Params) => this.FornecedorService.getFornecedor(+params['id']))
-                .subscribe(fornecedor => this.fornecedor = fornecedor);
+        if(this.usuarioLogado){
+            this.fornecedorService.getFornecedor(0);
         }
-        else {
-            this.fornecedor = new Fornecedor();
-        }
+        this.fornecedor = new Fornecedor();
         this.formulario = new FormGroup({
             nome: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
             cnpj: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
@@ -52,8 +52,12 @@ export class UsuarioDetalhesComponent implements OnInit {
 
     salvarFornecedor(fornecedor: Fornecedor, isValid: boolean): void {
         if (isValid) {
-            this.FornecedorService.salvarFornecedor(fornecedor);
+            this.fornecedorService.salvarFornecedor(fornecedor);
         }
+    }
+
+    buscarUsuarioLogado(){
+        let idUsuarioLogado = this.authService.getIdUserLogged();
     }
 
     // subcribeToFormChanges() {

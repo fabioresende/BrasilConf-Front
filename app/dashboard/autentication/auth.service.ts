@@ -7,7 +7,6 @@ import {AuthHttp, JwtHelper, tokenNotExpired} from "angular2-jwt";
 export class AuthService {
     jwtHelper: JwtHelper = new JwtHelper();
     headers: Headers = new Headers;
-    private URLBASE = 'http://localhost:8000/api';
 
     constructor(public http: Http, public authHttp: AuthHttp) {
         this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -34,8 +33,8 @@ export class AuthService {
         })
     }
 
-    getEmailUserLogged() {
-        this.authHttp.get('http://localhost:8080/token')
+    getIdUserLogged(){
+        return this.authHttp.get('auth/user')
             .subscribe(
                 (data: Response) => {
                     console.log(data)
