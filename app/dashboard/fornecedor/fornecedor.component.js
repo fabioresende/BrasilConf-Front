@@ -9,39 +9,63 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var user_service_1 = require("./user.service");
 var router_1 = require("@angular/router");
+require('rxjs/add/operator/switchMap');
+var fornecedor_service_1 = require('./fornecedor.service');
+var Fornecedor_1 = require("./Fornecedor");
 var common_1 = require('@angular/common');
-var UserComponent = (function () {
-    function UserComponent(usuarioService, route, location, router) {
-        this.usuarioService = usuarioService;
+var forms_1 = require('@angular/forms');
+var UsuarioDetalhesComponent = (function () {
+    function UsuarioDetalhesComponent(FornecedorService, route, location, fb) {
+        this.FornecedorService = FornecedorService;
         this.route = route;
         this.location = location;
-        this.router = router;
+        this.fb = fb;
+        this.events = [];
+        this.fornecedor = null;
+        this.fornecedorSelecionado = 1;
     }
     ;
-    UserComponent.prototype.ngOnInit = function () {
+    UsuarioDetalhesComponent.prototype.ngOnInit = function () {
         var _this = this;
-        // // $.getScript('../../../assets/js/material-dashboard.js');
-        this.route.params
-            .switchMap(function (params) { return _this.usuarioService.getUsuarios(); })
-            .subscribe(function (usuarios) { return _this.usuarios = usuarios; });
+        if (this.fornecedorSelecionado != 0) {
+            this.route.params
+                .switchMap(function (params) { return _this.FornecedorService.getFornecedor(+params['id']); })
+                .subscribe(function (fornecedor) { return _this.fornecedor = fornecedor; });
+        }
+        else {
+            this.fornecedor = new Fornecedor_1.Fornecedor();
+        }
+        this.formulario = new forms_1.FormGroup({
+            nome: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(5)]),
+            cnpj: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(5)]),
+            telefone: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(5)]),
+            logradouro: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(5)]),
+            tipo_logradouro: new forms_1.FormControl('', [forms_1.Validators.required]),
+            cep: new forms_1.FormControl('', [forms_1.Validators.required]),
+            cidade: new forms_1.FormControl('', [forms_1.Validators.required]),
+            estado: new forms_1.FormControl('', [forms_1.Validators.required]),
+            url_logo: new forms_1.FormControl('', [forms_1.Validators.required]),
+        });
     };
-    UserComponent.prototype.editarUsuario = function (idUsuario) {
-        this.router.navigate(['/usuario-detalhes', idUsuario]);
+    UsuarioDetalhesComponent.prototype.goBack = function () {
+        this.location.back();
     };
-    UserComponent = __decorate([
+    UsuarioDetalhesComponent.prototype.salvarFornecedor = function (fornecedor, isValid) {
+        if (isValid) {
+            this.FornecedorService.salvarFornecedor(fornecedor);
+        }
+    };
+    UsuarioDetalhesComponent = __decorate([
         core_1.Component({
-            selector: 'user-cmp',
+            selector: 'fornecedor',
             moduleId: module.id,
-            templateUrl: 'user.component.html',
-            providers: [user_service_1.UsuarioService],
-            styleUrls: ['user.component.css']
+            templateUrl: 'fornecedor.component.html',
+            providers: [fornecedor_service_1.FornecedorService]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof user_service_1.UsuarioService !== 'undefined' && user_service_1.UsuarioService) === 'function' && _a) || Object, router_1.ActivatedRoute, common_1.Location, router_1.Router])
-    ], UserComponent);
-    return UserComponent;
-    var _a;
+        __metadata('design:paramtypes', [fornecedor_service_1.FornecedorService, router_1.ActivatedRoute, common_1.Location, forms_1.FormBuilder])
+    ], UsuarioDetalhesComponent);
+    return UsuarioDetalhesComponent;
 }());
-exports.UserComponent = UserComponent;
+exports.UsuarioDetalhesComponent = UsuarioDetalhesComponent;
 //# sourceMappingURL=fornecedor.component.js.map
