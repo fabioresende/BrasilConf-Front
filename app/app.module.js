@@ -20,6 +20,9 @@ var footer_module_1 = require('./shared/footer/footer.module');
 var navbar_module_1 = require('./shared/navbar/navbar.module');
 var common_1 = require('@angular/common');
 var http_factory_1 = require("./http.factory");
+var aplication_component_1 = require("./aplication/aplication.component");
+var app_routes_1 = require("./app.routes");
+var login_component_1 = require("./login/login.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -32,12 +35,17 @@ var AppModule = (function () {
                 navbar_module_1.NavbarModule,
                 http_1.HttpModule,
                 footer_module_1.FooterModule,
-                router_1.RouterModule.forRoot([])
+                router_1.RouterModule.forRoot(app_routes_1.APP_MODULE_ROUTES)
             ],
-            declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent],
+            declarations: [
+                app_component_1.AppComponent,
+                dashboard_component_1.DashboardComponent,
+                aplication_component_1.AplicationComponent,
+                login_component_1.LoginComponent
+            ],
             providers: [
                 { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
-                { provide: http_1.Http, useFactory: http_factory_1.httpFactory, deps: [http_1.XHRBackend, http_1.RequestOptions] }
+                { provide: http_1.Http, useFactory: http_factory_1.httpFactory, deps: [http_1.XHRBackend, http_1.RequestOptions] },
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

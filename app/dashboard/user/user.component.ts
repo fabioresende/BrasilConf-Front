@@ -31,7 +31,7 @@ export class UserComponent implements OnInit {
         this.authService.loggedIn();
     }
     editarUsuario(idUsuario: number){
-        this.router.navigate(['/usuario-detalhes',idUsuario]);
+        this.router.navigate(['/aplication/usuario-detalhes',idUsuario]);
     }
 
 }

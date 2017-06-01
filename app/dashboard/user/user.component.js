@@ -32,7 +32,7 @@ var UserComponent = (function () {
         this.authService.loggedIn();
     };
     UserComponent.prototype.editarUsuario = function (idUsuario) {
-        this.router.navigate(['/usuario-detalhes', idUsuario]);
+        this.router.navigate(['/aplication/usuario-detalhes', idUsuario]);
     };
     UserComponent = __decorate([
         core_1.Component({

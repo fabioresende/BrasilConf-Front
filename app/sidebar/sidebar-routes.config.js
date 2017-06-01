@@ -1,6 +1,6 @@
 "use strict";
 exports.ROUTES = [
-    { path: 'dashboard', title: 'Dashboard', icon: 'dashboard', class: '' },
+    { path: 'home', title: 'Dashboard', icon: 'dashboard', class: '' },
     { path: 'user', title: 'Usuario', icon: 'person', class: '' },
     { path: 'table', title: 'Table List', icon: 'content_paste', class: '' },
     { path: 'Produto', title: 'Produto', icon: 'web_asset', class: '' },

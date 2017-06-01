@@ -13,6 +13,9 @@ import {NavbarModule} from './shared/navbar/navbar.module';
 
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {httpFactory} from "./http.factory";
+import {AplicationComponent} from "./aplication/aplication.component";
+import {APP_MODULE_ROUTES} from "./app.routes";
+import {LoginComponent} from "./login/login.component";
 
 @NgModule({
     imports: [
@@ -22,12 +25,17 @@ import {httpFactory} from "./http.factory";
         NavbarModule,
         HttpModule,
         FooterModule,
-        RouterModule.forRoot([])
+        RouterModule.forRoot(APP_MODULE_ROUTES)
     ],
-    declarations: [AppComponent, DashboardComponent],
+    declarations: [
+        AppComponent,
+        DashboardComponent,
+        AplicationComponent,
+        LoginComponent
+    ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
-        {provide: Http,useFactory: httpFactory,deps: [XHRBackend, RequestOptions]}
+        {provide: Http,useFactory: httpFactory,deps: [XHRBackend, RequestOptions]},
     ],
     bootstrap: [AppComponent]
 })

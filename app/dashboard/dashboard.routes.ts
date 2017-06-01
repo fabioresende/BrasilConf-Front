@@ -10,16 +10,7 @@ import {MapsComponent} from './maps/maps.component';
 import {UsuarioDetalhesComponent} from './usuario-detalhes/usuario-detalhes.component';
 import {FornecedorComponent} from './fornecedor/fornecedor.component';
 export const MODULE_ROUTES: Route[] = [
-    {path: 'dashboard', component: HomeComponent},
-    {path: 'user', component: UserComponent},
-    {path: 'table', component: TableComponent},
-    {path: 'icons', component: IconsComponent},
-    {path: 'notifications', component: NotificationsComponent},
-    {path: 'typography', component: TypographyComponent},
-    {path: 'maps', component: MapsComponent},
-    {path: 'usuario-detalhes/:id', component: UsuarioDetalhesComponent},
-    {path: 'fornecedor', component: FornecedorComponent},
-    {path: '', redirectTo: 'dashboard', pathMatch: 'full'}
+    //{path: 'aplication/home', component: HomeComponent},
 ]
 
 export const MODULE_COMPONENTS = [
@@ -29,7 +20,6 @@ export const MODULE_COMPONENTS = [
     IconsComponent,
     NotificationsComponent,
     TypographyComponent,
-    MapsComponent,
     UsuarioDetalhesComponent,
     FornecedorComponent
 ]

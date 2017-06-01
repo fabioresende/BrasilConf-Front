@@ -10,21 +10,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
-var AppComponent = (function () {
-    function AppComponent(location) {
+var AplicationComponent = (function () {
+    function AplicationComponent(location) {
         this.location = location;
     }
-    AppComponent.prototype.ngOnInit = function () {
+    AplicationComponent.prototype.ngOnInit = function () {
+        $.getScript('../assets/js/material-dashboard.js');
+        $.getScript('../assets/js/initMenu.js');
     };
-    AppComponent = __decorate([
+    AplicationComponent.prototype.isMaps = function (path) {
+        var titlee = this.location.prepareExternalUrl(this.location.path());
+        titlee = titlee.slice(1);
+        if (path == titlee) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    AplicationComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
+            selector: 'my-aplication',
             moduleId: module.id,
-            templateUrl: 'app.component.html',
+            templateUrl: 'aplication.component.html',
         }), 
         __metadata('design:paramtypes', [common_1.Location])
-    ], AppComponent);
-    return AppComponent;
+    ], AplicationComponent);
+    return AplicationComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.AplicationComponent = AplicationComponent;
+//# sourceMappingURL=aplication.component.js.map
