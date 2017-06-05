@@ -11,19 +11,43 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var auth_service_1 = require("../dashboard/autentication/auth.service");
+var Login_1 = require("./Login");
 var router_1 = require("@angular/router");
+var forms_1 = require("@angular/forms");
 var LoginComponent = (function () {
     function LoginComponent(authService, location, router) {
         this.authService = authService;
         this.location = location;
         this.router = router;
+        this.login = new Login_1.Login();
+        this.cardLogin = false;
     }
     ;
     LoginComponent.prototype.ngOnInit = function () {
-        // // $.getScript('../../../assets/js/material-dashboard.js');
+        this.formulario = new forms_1.FormGroup({
+            usuario: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(5)]),
+            senha: new forms_1.FormControl('', [forms_1.Validators.minLength(5)]),
+        });
     };
-    LoginComponent.prototype.logar = function (login) {
-        this.router.navigate(['/home']);
+    LoginComponent.prototype.logar = function (login, isValid) {
+        var _this = this;
+        this.login = login;
+        if (isValid) {
+            this.authService.login(login.usuario, login.senha).then(function (data) {
+                if (data.error) {
+                    console.log(data.error);
+                }
+                else {
+                    _this.router.navigate(['aplication/home']);
+                }
+            });
+        }
+    };
+    LoginComponent.prototype.showCardLogin = function () {
+        this.cardLogin = true;
+    };
+    LoginComponent.prototype.blurCardLogin = function () {
+        this.cardLogin = false;
     };
     LoginComponent = __decorate([
         core_1.Component({

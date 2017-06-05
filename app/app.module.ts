@@ -16,6 +16,7 @@ import {httpFactory} from "./http.factory";
 import {AplicationComponent} from "./aplication/aplication.component";
 import {APP_MODULE_ROUTES} from "./app.routes";
 import {LoginComponent} from "./login/login.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     imports: [
@@ -25,7 +26,9 @@ import {LoginComponent} from "./login/login.component";
         NavbarModule,
         HttpModule,
         FooterModule,
-        RouterModule.forRoot(APP_MODULE_ROUTES)
+        RouterModule.forRoot(APP_MODULE_ROUTES),
+        FormsModule,
+        ReactiveFormsModule
     ],
     declarations: [
         AppComponent,

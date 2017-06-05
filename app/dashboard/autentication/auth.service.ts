@@ -13,31 +13,31 @@ export class AuthService {
     }
 
     login(email: string, senha: string) {
-        return new Promise((resolve, reject) => {
-            this.http.post(
-                '/auth/login',
-                'usuario=' + email + '&senha=' + senha,
-                {
-                    headers: this.headers
-                }
-            ).subscribe(
+        return this.http.post(
+            '/auth/login',
+            'usuario=' + email + '&senha=' + senha,
+            {
+                headers: this.headers
+            }
+        ).toPromise()
+            .then(
                 res => {
                     localStorage.setItem('id_token', res.json().access_token);
                     localStorage.setItem('token_type', res.json().token_type);
                     localStorage.setItem('expires_in', res.json().expires_in);
-                },
-                error => {
-                    reject(error);
+                    return res.json()
                 }
             )
-        })
+            .catch(res => {
+                    return res.json()
+                }
+            )
     }
 
-    getIdUserLogged(){
+    getIdUserLogged() {
         return this.authHttp.get('auth/user')
             .subscribe(
                 (data: Response) => {
-                    console.log(data)
                     localStorage.setItem('id_token', data.json().token);
                 },
                 err => console.log(err),
@@ -70,6 +70,6 @@ export class AuthService {
 
     loggedIn() {
         var token = localStorage.getItem('id_token');
-        return this.jwtHelper.isTokenExpired(token);
+        return !this.jwtHelper.isTokenExpired(token);
     }
 }

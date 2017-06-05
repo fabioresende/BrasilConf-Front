@@ -21,23 +21,22 @@ var AuthService = (function () {
         this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
     }
     AuthService.prototype.login = function (email, senha) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.post('/auth/login', 'usuario=' + email + '&senha=' + senha, {
-                headers: _this.headers
-            }).subscribe(function (res) {
-                localStorage.setItem('id_token', res.json().access_token);
-                localStorage.setItem('token_type', res.json().token_type);
-                localStorage.setItem('expires_in', res.json().expires_in);
-            }, function (error) {
-                reject(error);
-            });
+        return this.http.post('/auth/login', 'usuario=' + email + '&senha=' + senha, {
+            headers: this.headers
+        }).toPromise()
+            .then(function (res) {
+            localStorage.setItem('id_token', res.json().access_token);
+            localStorage.setItem('token_type', res.json().token_type);
+            localStorage.setItem('expires_in', res.json().expires_in);
+            return res.json();
+        })
+            .catch(function (res) {
+            return res.json();
         });
     };
     AuthService.prototype.getIdUserLogged = function () {
         return this.authHttp.get('auth/user')
             .subscribe(function (data) {
-            console.log(data);
             localStorage.setItem('id_token', data.json().token);
         }, function (err) { return console.log(err); }, function () { return console.log('Complete'); });
     };
@@ -59,7 +58,7 @@ var AuthService = (function () {
     };
     AuthService.prototype.loggedIn = function () {
         var token = localStorage.getItem('id_token');
-        return this.jwtHelper.isTokenExpired(token);
+        return !this.jwtHelper.isTokenExpired(token);
     };
     AuthService = __decorate([
         core_1.Injectable(), 

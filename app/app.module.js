@@ -23,6 +23,7 @@ var http_factory_1 = require("./http.factory");
 var aplication_component_1 = require("./aplication/aplication.component");
 var app_routes_1 = require("./app.routes");
 var login_component_1 = require("./login/login.component");
+var forms_1 = require("@angular/forms");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -35,7 +36,9 @@ var AppModule = (function () {
                 navbar_module_1.NavbarModule,
                 http_1.HttpModule,
                 footer_module_1.FooterModule,
-                router_1.RouterModule.forRoot(app_routes_1.APP_MODULE_ROUTES)
+                router_1.RouterModule.forRoot(app_routes_1.APP_MODULE_ROUTES),
+                forms_1.FormsModule,
+                forms_1.ReactiveFormsModule
             ],
             declarations: [
                 app_component_1.AppComponent,

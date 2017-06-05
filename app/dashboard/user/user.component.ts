@@ -27,8 +27,6 @@ export class UserComponent implements OnInit {
         this.route.params
             .switchMap((params: Params) => this.usuarioService.getUsuarios())
             .subscribe(usuarios => this.usuarios = usuarios);
-        this.authService.login("fabioresendeb@gmail.com","123456");
-        this.authService.loggedIn();
     }
     editarUsuario(idUsuario: number){
         this.router.navigate(['/aplication/usuario-detalhes',idUsuario]);

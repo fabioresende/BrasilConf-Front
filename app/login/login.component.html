@@ -1,11 +1,69 @@
-<div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    a
-                </div>>
+<div>
+    <nav class="navbar navbar-absolute">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a href="#pablo" class="btn btn-simple">
+                            <img src="../../assets/img/logo.png" class="btn-logo">
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button href="#pablo" class="btn btn-primary btn-lg btn-facebook" (click)="showCardLogin()">
+                            Entrar
+                        </button>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
+    <div class="col-md-12 section-banner">
+        <div class="container-banner">
+            Faça parte do maior mercado online de compras entre empresas
+        </div>
+    </div>
+    <div class="col-md-12 footer rodape">
+        Todos os direitos reservados B2Brasil © | Fone: 34 40045045
+    </div>
+    <div class="card-center" *ngIf="cardLogin">
+        <div class="card">
+            <div class="card-content col-md-12">
+                <form [formGroup]="formulario" novalidate (ngSubmit)="logar(formulario.value, formulario.valid)">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group form-black ">
+                                <label class="control-label" for="usuario">Usuario</label>
+                                <input type="text" class="form-control" formControlName="usuario" id="usuario"
+                                       [ngModel]="login.usuario">
+                                <small [hidden]="formulario.controls.usuario.valid || (formulario.controls.usuario.pristine)"
+                                       class="text-danger">
+                                    Name is required (minimum 5 characters).
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group form-black ">
+                                <label class="control-label" for="senha">Senha</label>
+                                <input type="text" class="form-control" formControlName="senha" id="senha"
+                                       [ngModel]="login.senha">
+                                <small [hidden]="formulario.controls.senha.valid || (formulario.controls.senha.pristine)"
+                                       class="text-danger">
+                                    Name is required (minimum 5 characters).
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success pull-right">Entrar</button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="sombra" *ngIf="cardLogin" (click)="blurCardLogin()">
+
     </div>
 </div>

@@ -28,8 +28,6 @@ var UserComponent = (function () {
         this.route.params
             .switchMap(function (params) { return _this.usuarioService.getUsuarios(); })
             .subscribe(function (usuarios) { return _this.usuarios = usuarios; });
-        this.authService.login("fabioresendeb@gmail.com", "123456");
-        this.authService.loggedIn();
     };
     UserComponent.prototype.editarUsuario = function (idUsuario) {
         this.router.navigate(['/aplication/usuario-detalhes', idUsuario]);
