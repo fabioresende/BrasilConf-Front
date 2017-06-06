@@ -18,7 +18,7 @@ export class FornecedorComponent implements OnInit {
     private fornecedor: Fornecedor;
     private fornecedorSelecionado;
     public events: any[] = [];
-    public usuarioLogado ;
+    public usuarioLogado;
     constructor(private fornecedorService: FornecedorService,
                 private route: ActivatedRoute,
                 private location: Location,
@@ -29,9 +29,7 @@ export class FornecedorComponent implements OnInit {
     };
 
     ngOnInit() {
-        if(this.usuarioLogado){
-            this.fornecedorService.getFornecedor(0);
-        }
+            this.fornecedorService.getFornecedor();
         this.fornecedor = new Fornecedor();
         this.formulario = new FormGroup({
             nome: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
@@ -54,10 +52,6 @@ export class FornecedorComponent implements OnInit {
         if (isValid) {
             this.fornecedorService.salvarFornecedor(fornecedor);
         }
-    }
-
-    buscarUsuarioLogado(){
-        let idUsuarioLogado = this.authService.getIdUserLogged();
     }
 
     // subcribeToFormChanges() {
