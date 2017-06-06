@@ -1,11 +1,10 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import 'rxjs/add/operator/switchMap';
 import {UsuarioService} from '../user/user.service';
 import {Usuario} from "../user/Usuario";
 import {Location} from '@angular/common';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
-
 @Component({
     selector: 'usuario-detalhes',
     moduleId: module.id,
@@ -19,9 +18,13 @@ export class UsuarioDetalhesComponent implements OnInit {
     private usuarioSelecionado;
     private tiposUsuario;
     private descricaoTipoUsuario;
+    private descricaoStatus;
     public events: any[] = [];
 
-    constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private location: Location, private fb: FormBuilder) {
+    constructor(private usuarioService: UsuarioService,
+                private route: ActivatedRoute,
+                private location: Location,
+                ) {
         this.usuario = null;
         this.usuarioSelecionado = this.routerParams(this.location.path());
         this.tiposUsuario;
@@ -42,7 +45,8 @@ export class UsuarioDetalhesComponent implements OnInit {
             telefone: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
             usuario: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
             senha: new FormControl('', [<any>Validators.minLength(8)]),
-            id_tipo_usuario: new FormControl('')
+            id_tipo_usuario: new FormControl(''),
+            status: new FormControl('')
         });
         this.buscarTiposUsuarios();
     }
@@ -55,7 +59,9 @@ export class UsuarioDetalhesComponent implements OnInit {
         this.usuario = usuario;
         this.setTipoUsuario(usuario);
         if (isValid) {
-            this.usuarioService.salvarUsuario(this.usuario);
+            this.usuarioService.salvarUsuario(this.usuario).then((data) => {
+
+            });
         }
     }
 
@@ -63,6 +69,12 @@ export class UsuarioDetalhesComponent implements OnInit {
         this.usuarioService.buscarTiposUsuario().then((data) => {
             this.tiposUsuario = data;
             this.descricaoTipoUsuario = this.tiposUsuario[this.usuario.id_tipo_usuario];
+            if (this.usuario.status) {
+                this.descricaoStatus = 'Ativo'
+            }
+            else {
+                this.descricaoStatus = 'Inativo'
+            }
         });
     }
 
@@ -72,7 +84,8 @@ export class UsuarioDetalhesComponent implements OnInit {
 
     routerParams(params: string): string {
         var parametros = params.split("/");
-        var parametro = parametros[2];
+        var parametro = parametros[3];
         return parametro;
     }
+
 }
