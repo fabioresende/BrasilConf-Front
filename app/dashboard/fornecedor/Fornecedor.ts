@@ -1,13 +1,14 @@
 export class Fornecedor {
-    idFornecedor: number;
+    id: number;
     nome: string;
     telefone: string;
     cnpj:string;
     logradouro:string;
-    tipoLogradouro:string;
+    tipo_logradouro:string;
     numero:number;
     cep:string;
     cidade:string;
     estado:string;
-    urlLogo:String;
+    url_logo:string;
+    historia:string;
 }

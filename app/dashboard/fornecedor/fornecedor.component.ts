@@ -18,11 +18,9 @@ export class FornecedorComponent implements OnInit {
     private fornecedor: Fornecedor;
     private fornecedorSelecionado;
     public events: any[] = [];
-    public usuarioLogado;
     constructor(private fornecedorService: FornecedorService,
-                private route: ActivatedRoute,
                 private location: Location,
-                private fb: FormBuilder,private authService:AuthService) {
+                ) {
 
         this.fornecedor = new Fornecedor();
         this.fornecedorSelecionado = 1;
@@ -31,7 +29,6 @@ export class FornecedorComponent implements OnInit {
     ngOnInit() {
         this.fornecedorService.getFornecedor().then((data)=>{
             this.fornecedor = data;
-            console.log(this.fornecedor);
         });
         this.formulario = new FormGroup({
             nome: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
@@ -44,6 +41,7 @@ export class FornecedorComponent implements OnInit {
             cidade: new FormControl('',[<any>Validators.required]),
             estado: new FormControl('',[<any>Validators.required]),
             url_logo: new FormControl('',[<any>Validators.required]),
+            historia: new FormControl('')
         });
     }
 
@@ -52,6 +50,7 @@ export class FornecedorComponent implements OnInit {
     }
 
     salvarFornecedor(fornecedor: Fornecedor, isValid: boolean): void {
+        fornecedor.id = this.fornecedor.id;
         if (isValid) {
             this.fornecedorService.salvarFornecedor(fornecedor);
         }

@@ -16,11 +16,10 @@ var Usuario_1 = require("../user/Usuario");
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
 var UsuarioDetalhesComponent = (function () {
-    function UsuarioDetalhesComponent(usuarioService, route, location, fb) {
+    function UsuarioDetalhesComponent(usuarioService, route, location) {
         this.usuarioService = usuarioService;
         this.route = route;
         this.location = location;
-        this.fb = fb;
         this.events = [];
         this.usuario = null;
         this.usuarioSelecionado = this.routerParams(this.location.path());
@@ -43,7 +42,8 @@ var UsuarioDetalhesComponent = (function () {
             telefone: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(5)]),
             usuario: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(5)]),
             senha: new forms_1.FormControl('', [forms_1.Validators.minLength(8)]),
-            id_tipo_usuario: new forms_1.FormControl('')
+            id_tipo_usuario: new forms_1.FormControl(''),
+            status: new forms_1.FormControl('')
         });
         this.buscarTiposUsuarios();
     };
@@ -54,7 +54,8 @@ var UsuarioDetalhesComponent = (function () {
         this.usuario = usuario;
         this.setTipoUsuario(usuario);
         if (isValid) {
-            this.usuarioService.salvarUsuario(this.usuario);
+            this.usuarioService.salvarUsuario(this.usuario).then(function (data) {
+            });
         }
     };
     UsuarioDetalhesComponent.prototype.buscarTiposUsuarios = function () {
@@ -62,6 +63,12 @@ var UsuarioDetalhesComponent = (function () {
         this.usuarioService.buscarTiposUsuario().then(function (data) {
             _this.tiposUsuario = data;
             _this.descricaoTipoUsuario = _this.tiposUsuario[_this.usuario.id_tipo_usuario];
+            if (_this.usuario.status) {
+                _this.descricaoStatus = 'Ativo';
+            }
+            else {
+                _this.descricaoStatus = 'Inativo';
+            }
         });
     };
     UsuarioDetalhesComponent.prototype.setTipoUsuario = function (usuario) {
@@ -69,7 +76,7 @@ var UsuarioDetalhesComponent = (function () {
     };
     UsuarioDetalhesComponent.prototype.routerParams = function (params) {
         var parametros = params.split("/");
-        var parametro = parametros[2];
+        var parametro = parametros[3];
         return parametro;
     };
     UsuarioDetalhesComponent = __decorate([
@@ -79,7 +86,7 @@ var UsuarioDetalhesComponent = (function () {
             templateUrl: 'usuario-detalhes.component.html',
             providers: [user_service_1.UsuarioService]
         }), 
-        __metadata('design:paramtypes', [user_service_1.UsuarioService, router_1.ActivatedRoute, common_1.Location, forms_1.FormBuilder])
+        __metadata('design:paramtypes', [user_service_1.UsuarioService, router_1.ActivatedRoute, common_1.Location])
     ], UsuarioDetalhesComponent);
     return UsuarioDetalhesComponent;
 }());
