@@ -1,17 +1,17 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header" data-background-color="red">
                         <h4 class="title">Fornecedor</h4>
                         <p class="category">Complete as informações do seu cadastro</p>
                     </div>
                     <div class="card-content">
-                        <form *ngIf="usuario" [formGroup]="formulario" novalidate (ngSubmit)="salvarFornecedor(formulario.value, formulario.valid)">
+                        <form [formGroup]="formulario" novalidate (ngSubmit)="salvarFornecedor(formulario.value, formulario.valid)">
                             <div class="row">
                                 <div class="col-md-5">
-                                    <div class="form-group form-black label-floating">
+                                    <div class="form-group form-black">
                                         <label class="control-label" for="nome">Nome</label>
                                         <input type="text" class="form-control" formControlName="nome" id="nome" [ngModel]="fornecedor.nome">
                                         <small [hidden]="formulario.controls.nome.valid || (formulario.controls.nome.pristine)" class="text-danger">
@@ -20,13 +20,13 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group form-black label-floating">
-                                        <label class="control-label">CPF</label>
+                                    <div class="form-group form-black">
+                                        <label class="control-label">CNPJ</label>
                                         <input type="text" class="form-control" formControlName="cnpj" [ngModel]="fornecedor.cnpj">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="form-group form-black label-floating">
+                                    <div class="form-group form-black">
                                         <label class="control-label">Telefone</label>
                                         <input type="text" class="form-control" formControlName="telefone" [ngModel]="fornecedor.telefone">
                                     </div>
@@ -34,48 +34,50 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-5">
-                                    <div class="form-group form-black label-floating">
+                                <div class="col-md-4">
+                                    <div class="form-group form-black">
                                         <label class="control-label">Cep</label>
                                         <input type="text" class="form-control" formControlName="cep" [ngModel]="fornecedor.cep">
                                     </div>
                                 </div>
-                                <div class="col-md-5">
-                                    <div class="form-group form-black label-floating">
-                                        <label class="control-label">Usuario</label>
-                                        <input type="text" class="form-control" formControlName="logradouro" [ngModel]="fornecedor.logradouro">
+                                <div class="col-md-4">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Estado</label>
+                                        <input type="text" class="form-control" formControlName="estado" [ngModel]="fornecedor.estado">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group form-black label-floating">
-                                        <label class="control-label">Tipo Logradouro</label>
-                                        <input type="password" class="form-control" formControlName="tipoLogradouro" [ngModel]="fornecedor.tipoLogradouro">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group form-black label-floating">
-                                        <label class="control-label">Número</label>
-                                        <input type="password" class="form-control" formControlName="numero" [ngModel]="fornecedor.numero">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Cidade</label>
+                                        <input type="text" class="form-control" formControlName="cidade" [ngModel]="fornecedor.cidade">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group form-black label-floating">
-                                        <label class="control-label">Cidade</label>
-                                        <input type="password" class="form-control" formControlName="cidade" [ngModel]="fornecedor.cidade">
+                                <div class="col-md-2">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Tipo Logradouro</label>
+                                        <input type="text" class="form-control" formControlName="tipo_logradouro" [ngModel]="fornecedor.tipo_logradouro">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Rua</label>
+                                        <input type="text" class="form-control" formControlName="logradouro" [ngModel]="fornecedor.logradouro">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group form-black label-floating">
-                                        <label class="control-label">Estado</label>
-                                        <input type="password" class="form-control" formControlName="estado" [ngModel]="fornecedor.estado">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Número</label>
+                                        <input type="text" class="form-control" formControlName="numero" [ngModel]="fornecedor.numero">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group form-black label-floating">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-black">
                                         <label class="control-label">Logo</label>
-                                        <input type="password" class="form-control" formControlName="logo" [ngModel]="fornecedor.urlLogo">
+                                        <input type="text" class="form-control" formControlName="url_logo" [ngModel]="fornecedor.url_logo">
                                     </div>
                                 </div>
                             </div>
@@ -85,24 +87,24 @@
                     </div>
                 </div>
             </div>
-            <!--<div class="col-md-4">-->
-            <!--<div class="card card-profile">-->
-            <!--<div class="card-avatar">-->
-            <!--<a href="#pablo">-->
-            <!--<img class="img" src="../assets/img/faces/marc.jpg" />-->
-            <!--</a>-->
-            <!--</div>-->
+            <div class="col-md-4">
+            <div class="card card-profile">
+            <div class="card-avatar">
+            <a href="#pablo">
+            <img class="img" src="{{fornecedor.url_logo}}" />
+            </a>
+            </div>
 
-            <!--<div class="content">-->
-            <!--<h6 class="category text-gray">CEO / Co-Founder</h6>-->
-            <!--<h4 class="card-title">Alec Thompson</h4>-->
-            <!--<p class="card-content">-->
-            <!--Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...-->
-            <!--</p>-->
-            <!--<a href="#pablo" class="btn btn-danger btn-round">Follow</a>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
+            <div class="content">
+            <h6 class="category text-gray">Gold / Fornecedor</h6>
+            <h4 class="card-title">{{fornecedor.nome}}</h4>
+            <p class="card-content">
+            Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+            </p>
+            <a href="#pablo" class="btn btn-danger btn-round">Follow</a>
+            </div>
+            </div>
+            </div>
         </div>
     </div>
 </div>

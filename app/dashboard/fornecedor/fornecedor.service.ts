@@ -6,18 +6,17 @@ import {Mensagem} from "../Mensagem";
 
 @Injectable()
 export class FornecedorService {
-    private URLBASE = 'http://localhost:8000/api';
     constructor(private http: Http) {
     }
-    getFornecedor(): Promise<Fornecedor> {
-        return this.http.get(this.URLBASE + "/fornecedor")
+    getFornecedor(){
+        return this.http.get("/fornecedor")
             .toPromise()
-            .then(response => response.json() as Fornecedor)
+            .then(response => {return response.json() as Fornecedor})
             .catch();
     }
 
     salvarFornecedor(fornecedor:Fornecedor) {
-        return this.http.post(this.URLBASE + "/fornecedor/salvar", fornecedor)
+        return this.http.post( "/fornecedor/salvar", fornecedor)
             .toPromise()
             .then(response => response.json() as Mensagem);
     }

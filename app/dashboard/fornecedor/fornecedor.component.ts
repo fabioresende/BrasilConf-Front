@@ -24,13 +24,15 @@ export class FornecedorComponent implements OnInit {
                 private location: Location,
                 private fb: FormBuilder,private authService:AuthService) {
 
-        this.fornecedor = null;
+        this.fornecedor = new Fornecedor();
         this.fornecedorSelecionado = 1;
     };
 
     ngOnInit() {
-            this.fornecedorService.getFornecedor();
-        this.fornecedor = new Fornecedor();
+        this.fornecedorService.getFornecedor().then((data)=>{
+            this.fornecedor = data;
+            console.log(this.fornecedor);
+        });
         this.formulario = new FormGroup({
             nome: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
             cnpj: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
@@ -38,6 +40,7 @@ export class FornecedorComponent implements OnInit {
             logradouro: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
             tipo_logradouro: new FormControl('', [<any>Validators.required]),
             cep: new FormControl('',[<any>Validators.required]),
+            numero: new FormControl('',[<any>Validators.required]),
             cidade: new FormControl('',[<any>Validators.required]),
             estado: new FormControl('',[<any>Validators.required]),
             url_logo: new FormControl('',[<any>Validators.required]),
