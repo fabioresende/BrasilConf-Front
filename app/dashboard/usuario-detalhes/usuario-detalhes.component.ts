@@ -56,10 +56,9 @@ export class UsuarioDetalhesComponent implements OnInit {
     }
 
     salvarUsuario(usuario: Usuario, isValid: boolean): void {
-        this.usuario = usuario;
-        this.setTipoUsuario(usuario);
+        usuario = this.setTipoUsuario(usuario);
         if (isValid) {
-            this.usuarioService.salvarUsuario(this.usuario).then((data) => {
+            this.usuarioService.salvarUsuario(usuario).then((data) => {
 
             });
         }
@@ -79,7 +78,17 @@ export class UsuarioDetalhesComponent implements OnInit {
     }
 
     setTipoUsuario(usuario) {
-        this.usuario.id_tipo_usuario = this.tiposUsuario.indexOf(usuario.id_tipo_usuario);
+        usuario.id = this.usuario.id;
+        usuario.id_usuarioadm = this.usuario.id_usuarioadm;
+        usuario.id_fornecedor = this.usuario.id_fornecedor;
+        usuario.id_tipo_usuario = this.tiposUsuario.indexOf(usuario.id_tipo_usuario)+1;
+        if (usuario.status == "Ativo" ) {
+            usuario.status = 1;
+        }
+        else {
+            usuario.status = 1;
+        }
+        return usuario;
     }
 
     routerParams(params: string): string {

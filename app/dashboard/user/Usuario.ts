@@ -7,4 +7,6 @@ export class Usuario {
     telefone: string;
     status:boolean;
     id_tipo_usuario: number;
+    id_usuarioadm: number;
+    id_fornecedor: number;
 }
