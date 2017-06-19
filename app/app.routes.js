@@ -9,6 +9,9 @@ var icons_component_1 = require("./dashboard/icons/icons.component");
 var typography_component_1 = require("./dashboard/typography/typography.component");
 var usuario_detalhes_component_1 = require("./dashboard/usuario-detalhes/usuario-detalhes.component");
 var fornecedor_component_1 = require("./dashboard/fornecedor/fornecedor.component");
+var produto_component_1 = require("./dashboard/produto/produto.component");
+var produto_detalhes_component_1 = require("./dashboard/produto-detalhes/produto-detalhes.component");
+var loja_component_1 = require("./dashboard/loja/loja.component");
 exports.APP_MODULE_ROUTES = [
     { path: 'aplication', component: aplication_component_1.AplicationComponent,
         children: [
@@ -19,7 +22,10 @@ exports.APP_MODULE_ROUTES = [
             { path: 'notifications', component: notifications_component_1.NotificationsComponent },
             { path: 'typography', component: typography_component_1.TypographyComponent },
             { path: 'usuario-detalhes/:id', component: usuario_detalhes_component_1.UsuarioDetalhesComponent },
-            { path: 'fornecedor', component: fornecedor_component_1.FornecedorComponent }
+            { path: 'fornecedor', component: fornecedor_component_1.FornecedorComponent },
+            { path: 'produto', component: produto_component_1.ProdutoComponent },
+            { path: 'produto-detalhes/:id', component: produto_detalhes_component_1.ProdutoDetalhesComponent },
+            { path: 'loja', component: loja_component_1.LojaComponent }
         ] },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: '', redirectTo: 'login', pathMatch: 'full' }

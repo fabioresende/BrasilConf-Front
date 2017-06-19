@@ -11,30 +11,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require("@angular/http");
 require('rxjs/add/operator/toPromise');
-var FornecedorService = (function () {
-    function FornecedorService(http) {
+var ProdutoService = (function () {
+    function ProdutoService(http) {
         this.http = http;
+        this.teste = null;
     }
-    FornecedorService.prototype.getFornecedor = function () {
-        return this.http.get("/fornecedor")
+    ProdutoService.prototype.getProdutos = function () {
+        return this.http.get("/produtos")
             .toPromise()
-            .then(function (response) { return response.json(); })
-            .catch();
+            .then(function (response) {
+            console.log(response);
+            return response.json();
+        });
     };
-    FornecedorService.prototype.salvarFornecedor = function (fornecedor) {
-        return this.http.post("/fornecedor/salvar", fornecedor)
+    ;
+    ProdutoService.prototype.getProduto = function (idProduto) {
+        return this.http.get("/produto/buscar/" + idProduto)
+            .toPromise()
+            .then(function (response) {
+            return response.json();
+        });
+    };
+    ProdutoService.prototype.salvarProduto = function (produto) {
+        return this.http.post("/produto/salvar", produto)
             .toPromise()
             .then(function (response) { return response.json(); });
     };
-    FornecedorService.prototype.handleError = function (error) {
+    ProdutoService.prototype.buscarDepartamentos = function () {
+        return this.http.get("/produto/departamentos")
+            .toPromise()
+            .then(function (response) { return response.json(); });
+    };
+    ProdutoService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     };
-    FornecedorService = __decorate([
+    ProdutoService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], FornecedorService);
-    return FornecedorService;
+    ], ProdutoService);
+    return ProdutoService;
 }());
-exports.FornecedorService = FornecedorService;
-//# sourceMappingURL=fornecedor.service.js.map
+exports.ProdutoService = ProdutoService;
+//# sourceMappingURL=produto.service.js.map

@@ -1,0 +1,126 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header" data-background-color="red">
+                        <h4 class="title">Produto</h4>
+                        <p class="category">Complete as informações do produto</p>
+                    </div>
+                    <div class="card-content">
+                        <form [formGroup]="formulario" novalidate (ngSubmit)="salvarProduto(formulario.value, formulario.valid)">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group form-black">
+                                        <label class="control-label" for="nome">Nome</label>
+                                        <input type="text" class="form-control" formControlName="nome" id="nome" [ngModel]="produto.nome">
+                                        <small [hidden]="formulario.controls.nome.valid || (formulario.controls.nome.pristine)" class="text-danger">
+                                            Informe um nome valido (minimum 5 characters).
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group form-black ">
+                                        <label for="selectDepartamento" class="control-label">Departamento</label>
+                                        <select class="form-control" id="selectDepartamento" formControlName="id_departamento">
+                                            <option *ngFor="let departamento of departamentos" [selected]="produto.id_departamento" [ngValue]="produto.id_departamento">{{departamento.descricao}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Fabricante</label>
+                                        <input type="text" class="form-control" formControlName="fabricante" [ngModel]="produto.fabricante">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Descrição do Produto</label>
+                                        <textarea class="form-control" rows="8" placeholder="Descreva o seu porduto" formControlName="descricao" [ngModel]="produto.descricao"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Url Foto</label>
+                                        <input type="text" class="form-control" formControlName="url_foto" [ngModel]="produto.url_foto">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Largura</label>
+                                        <input type="text" class="form-control" formControlName="largura" [ngModel]="produto.largura">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Altura</label>
+                                        <input type="text" class="form-control" formControlName="altura" [ngModel]="produto.altura">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Quantidade</label>
+                                        <input type="number" class="form-control" formControlName="quantidade" [ngModel]="produto.quantidade">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Preço</label>
+                                        <input type="text" class="form-control" formControlName="preco" [ngModel]="produto.preco">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Valiade</label>
+                                        <input type="date" class="form-control" formControlName="validade" [ngModel]="produto.validade">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group form-black ">
+                                        <label for="selectStatus" class="control-label">Status</label>
+                                        <select class="form-control" id="selectStatus" formControlName="status">
+                                            <option >Inativo</option>
+                                            <option [selected]="produto.status">Ativo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success pull-right" [disabled]="!formulario.valid">Salvar</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 ct-chart-line">
+                <div class="card card-profile">
+                    <div class="card-header row card-header-primary">
+                        <div class="col-md-3">
+                            <img class="" src="{{produto.fornecedor.url_logo}}">
+                        </div>
+                        <div class="col-md-9">
+                            <h6 class="col-md-10 text-left">{{produto.fornecedor.nome}}</h6>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <img class='col-md-12' src="{{produto.url_foto}}">
+                        <h6 class="category text-gray">Gold / Fornecedor</h6>
+                        <h4 class="card-title">{{produto.nome}}</h4>
+                        <p class="card-content">
+                            Preço: R${{produto.preco}}
+                        </p>
+                        <div href="#pablo" class="btn btn-success btn-round">Comprar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

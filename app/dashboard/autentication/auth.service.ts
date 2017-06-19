@@ -34,15 +34,14 @@ export class AuthService {
             )
     }
 
-    getIdUserLogged() {
-        return this.authHttp.get('auth/user')
-            .subscribe(
-                (data: Response) => {
-                    localStorage.setItem('id_token', data.json().token);
-                },
-                err => console.log(err),
-                () => console.log('Complete')
-            );
+    getUsuarioLogado() {
+        return this.http.get('/auth/usuario')
+            .toPromise()
+            .then(
+                res => {
+                    return res.json()
+                }
+            )
     }
 
     tokenSubscription() {

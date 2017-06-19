@@ -19,7 +19,7 @@ $(document).ready(function(){
     $moving_tab = $('<div class="moving-tab"/>');
     $('.sidebar .nav-container').append($moving_tab);
 
-    $this = $('.sidebar .nav').find('li.active a');
+    $this = $('.sidebar .nav').find('li a');
     animationSidebar($this, false);
     $('div').removeClass('.moving-tab');
     if (window.history && window.history.pushState) {

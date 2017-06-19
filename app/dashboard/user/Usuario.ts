@@ -9,4 +9,5 @@ export class Usuario {
     id_tipo_usuario: number;
     id_usuarioadm: number;
     id_fornecedor: number;
+    tipo_empresa: number;
 }

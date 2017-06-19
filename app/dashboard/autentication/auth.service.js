@@ -34,11 +34,12 @@ var AuthService = (function () {
             return res.json();
         });
     };
-    AuthService.prototype.getIdUserLogged = function () {
-        return this.authHttp.get('auth/user')
-            .subscribe(function (data) {
-            localStorage.setItem('id_token', data.json().token);
-        }, function (err) { return console.log(err); }, function () { return console.log('Complete'); });
+    AuthService.prototype.getUsuarioLogado = function () {
+        return this.http.get('/auth/usuario')
+            .toPromise()
+            .then(function (res) {
+            return res.json();
+        });
     };
     AuthService.prototype.tokenSubscription = function () {
         this.authHttp.tokenStream

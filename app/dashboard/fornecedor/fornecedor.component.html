@@ -85,7 +85,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group form-black">
                                         <label class="control-label">História do Fornecedor</label>
-                                        <textarea class="form-control" rows="8" placeholder="Descreva uma breve história da marca" formControlName="historia"></textarea>
+                                        <textarea class="form-control" rows="8" placeholder="Descreva uma breve história da marca" formControlName="historia" [ngModel]="fornecedor.historia"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
             <h6 class="category text-gray">Gold / Fornecedor</h6>
             <h4 class="card-title">{{fornecedor.nome}}</h4>
             <p class="card-content">
-            Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+            {{fornecedor.historia}}
             </p>
             <div href="#pablo" class="btn btn-danger btn-round">Follow</div>
             </div>

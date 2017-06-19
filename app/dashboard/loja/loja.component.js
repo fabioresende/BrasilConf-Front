@@ -10,24 +10,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 require('rxjs/add/operator/switchMap');
-var fornecedor_service_1 = require('./fornecedor.service');
-var Fornecedor_1 = require("./Fornecedor");
+var loja_service_1 = require('./loja.service');
+var Loja_1 = require("./Loja");
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
 var auth_service_1 = require('../autentication/auth.service');
-var FornecedorComponent = (function () {
-    function FornecedorComponent(fornecedorService, location) {
-        this.fornecedorService = fornecedorService;
+var LojaComponent = (function () {
+    function LojaComponent(lojaService, location) {
+        this.lojaService = lojaService;
         this.location = location;
         this.events = [];
-        this.fornecedor = new Fornecedor_1.Fornecedor();
-        this.fornecedorSelecionado = 1;
+        this.loja = new Loja_1.Loja();
+        this.lojaSelecionado = 1;
     }
     ;
-    FornecedorComponent.prototype.ngOnInit = function () {
+    LojaComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.fornecedorService.getFornecedor().then(function (data) {
-            _this.fornecedor = data;
+        this.lojaService.getLoja().then(function (data) {
+            _this.loja = data;
+            if (data) {
+                _this.lojaService.getAreasRelacionadas().then(function (data) {
+                    _this.areas = data;
+                });
+            }
+            else {
+                _this.lojaService.getAreas().then(function (data) {
+                    _this.areas = data;
+                });
+            }
         });
         this.formulario = new forms_1.FormGroup({
             nome: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(5)]),
@@ -40,29 +50,30 @@ var FornecedorComponent = (function () {
             cidade: new forms_1.FormControl('', [forms_1.Validators.required]),
             estado: new forms_1.FormControl('', [forms_1.Validators.required]),
             url_logo: new forms_1.FormControl('', [forms_1.Validators.required]),
-            historia: new forms_1.FormControl('')
+            url_site: new forms_1.FormControl('', [forms_1.Validators.required]),
+            nome_fantasia: new forms_1.FormControl(''),
         });
     };
-    FornecedorComponent.prototype.goBack = function () {
+    LojaComponent.prototype.goBack = function () {
         this.location.back();
     };
-    FornecedorComponent.prototype.salvarFornecedor = function (fornecedor, isValid) {
-        fornecedor.id = this.fornecedor.id;
+    LojaComponent.prototype.salvarLoja = function (loja, isValid) {
+        loja.id_loja = this.loja.id_loja;
         if (isValid) {
-            console.log(fornecedor);
-            this.fornecedorService.salvarFornecedor(fornecedor);
+            console.log(loja);
+            this.lojaService.salvarLoja(loja);
         }
     };
-    FornecedorComponent = __decorate([
+    LojaComponent = __decorate([
         core_1.Component({
-            selector: 'fornecedor',
+            selector: 'loja',
             moduleId: module.id,
-            templateUrl: 'fornecedor.component.html',
-            providers: [fornecedor_service_1.FornecedorService, auth_service_1.AuthService]
+            templateUrl: 'loja.component.html',
+            providers: [loja_service_1.LojaService, auth_service_1.AuthService]
         }), 
-        __metadata('design:paramtypes', [fornecedor_service_1.FornecedorService, common_1.Location])
-    ], FornecedorComponent);
-    return FornecedorComponent;
+        __metadata('design:paramtypes', [loja_service_1.LojaService, common_1.Location])
+    ], LojaComponent);
+    return LojaComponent;
 }());
-exports.FornecedorComponent = FornecedorComponent;
-//# sourceMappingURL=fornecedor.component.js.map
+exports.LojaComponent = LojaComponent;
+//# sourceMappingURL=loja.component.js.map

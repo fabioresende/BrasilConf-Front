@@ -1,34 +1,45 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import 'rxjs/add/operator/switchMap';
-import {FornecedorService} from './fornecedor.service';
-import {Fornecedor} from "./Fornecedor";
+import {LojaService} from './loja.service';
+import {Loja} from "./Loja";
 import {Location} from '@angular/common';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import {AuthService} from '../autentication/auth.service';
+import {Area} from "./Area";
 @Component({
-    selector: 'fornecedor',
+    selector: 'loja',
     moduleId: module.id,
-    templateUrl: 'fornecedor.component.html',
-    providers: [FornecedorService,AuthService]
+    templateUrl: 'loja.component.html',
+    providers: [LojaService,AuthService]
 })
 
-export class FornecedorComponent implements OnInit {
+export class LojaComponent implements OnInit {
     private formulario: FormGroup;
-    private fornecedor: Fornecedor;
-    private fornecedorSelecionado;
+    private loja: Loja;
+    private lojaSelecionado;
     public events: any[] = [];
-    constructor(private fornecedorService: FornecedorService,
+    private areas: Array<Area>;
+    constructor(private lojaService: LojaService,
                 private location: Location,
                 ) {
 
-        this.fornecedor = new Fornecedor();
-        this.fornecedorSelecionado = 1;
+        this.loja = new Loja();
+        this.lojaSelecionado = 1;
     };
 
     ngOnInit() {
-        this.fornecedorService.getFornecedor().then((data)=>{
-            this.fornecedor = data;
+        this.lojaService.getLoja().then((data)=>{
+            this.loja = data;
+            if (data) {
+                this.lojaService.getAreasRelacionadas().then((data)=>{
+                    this.areas = data;
+                });
+            } else{
+                this.lojaService.getAreas().then((data)=>{
+                    this.areas = data;
+                });
+            }
         });
         this.formulario = new FormGroup({
             nome: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
@@ -41,7 +52,9 @@ export class FornecedorComponent implements OnInit {
             cidade: new FormControl('',[<any>Validators.required]),
             estado: new FormControl('',[<any>Validators.required]),
             url_logo: new FormControl('',[<any>Validators.required]),
-            historia: new FormControl('')
+            url_site: new FormControl('',[<any>Validators.required]),
+            nome_fantasia: new FormControl(''),
+
         });
     }
 
@@ -49,11 +62,11 @@ export class FornecedorComponent implements OnInit {
         this.location.back();
     }
 
-    salvarFornecedor(fornecedor: Fornecedor, isValid: boolean): void {
-        fornecedor.id = this.fornecedor.id;
+    salvarLoja(loja: Loja, isValid: boolean): void {
+        loja.id_loja = this.loja.id_loja;
         if (isValid) {
-            console.log(fornecedor);
-            this.fornecedorService.salvarFornecedor(fornecedor);
+            console.log(loja);
+            this.lojaService.salvarLoja(loja);
         }
     }
 }

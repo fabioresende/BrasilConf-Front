@@ -1,0 +1,45 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="red">
+                        <button class="btn btn-float-right btn-tranparent" [routerLink]="['/aplication/produto-detalhes',0]">
+                            <i data-notify="icon" class="material-icons">add</i>
+                            CADASTRAR PRODUTO
+                        </button>
+                        <h4 class="title">Produtos</h4>
+                        <p class="category">Estes são todos os produtos vendido por você</p>
+                    </div>
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <thead class="text-danger">
+                            <tr>
+                                <th>Produto</th>
+                                <th>Fabricante</th>
+                                <th>Departamento</th>
+                                <th>Status</th>
+                                <th>Acão</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let produto of produtos">
+                                <td class="col-md-3">{{produto.nome}}</td>
+                                <td class="col-md-3">{{produto.fabricante}}</td>
+                                <td class="col-md-2">{{produto.departamento.descricao}}</td>
+                                <td class="col-md-2">{{produto.status}}</td>
+                                <td class="col-md-2">
+                                    <button class="btn btn-success btn-sm" (click)="editarProduto(produto.id)">
+                                        <i data-notify="icon" class="material-icons">create</i>
+                                        Editar
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

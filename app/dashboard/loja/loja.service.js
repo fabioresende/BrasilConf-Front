@@ -11,30 +11,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require("@angular/http");
 require('rxjs/add/operator/toPromise');
-var FornecedorService = (function () {
-    function FornecedorService(http) {
+var LojaService = (function () {
+    function LojaService(http) {
         this.http = http;
     }
-    FornecedorService.prototype.getFornecedor = function () {
-        return this.http.get("/fornecedor")
+    LojaService.prototype.getLoja = function () {
+        return this.http.get("/loja")
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch();
     };
-    FornecedorService.prototype.salvarFornecedor = function (fornecedor) {
-        return this.http.post("/fornecedor/salvar", fornecedor)
+    LojaService.prototype.getAreas = function () {
+        return this.http.get("/loja/areas")
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch();
+    };
+    LojaService.prototype.getAreasRelacionadas = function () {
+        return this.http.get("/loja/areas-relacionadas")
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch();
+    };
+    LojaService.prototype.salvarLoja = function (loja) {
+        return this.http.post("/loja/salvar", loja)
             .toPromise()
             .then(function (response) { return response.json(); });
     };
-    FornecedorService.prototype.handleError = function (error) {
+    LojaService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     };
-    FornecedorService = __decorate([
+    LojaService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], FornecedorService);
-    return FornecedorService;
+    ], LojaService);
+    return LojaService;
 }());
-exports.FornecedorService = FornecedorService;
-//# sourceMappingURL=fornecedor.service.js.map
+exports.LojaService = LojaService;
+//# sourceMappingURL=loja.service.js.map

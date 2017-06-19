@@ -17,13 +17,16 @@ export class UserComponent implements OnInit {
     private usuarios : Usuario[];
     constructor(
         private usuarioService: UsuarioService,
-        private authService: AuthService,
         private route: ActivatedRoute,
-        private location: Location,
-        private router:Router
+        private router:Router,
+        private authService: AuthService
     ){};
     ngOnInit() {
-        // // $.getScript('../../../assets/js/material-dashboard.js');
+        this.authService.getUsuarioLogado().then((usuario) =>{
+            if (usuario.id_tipo_usuario != 1) {
+                this.router.navigate(['/aplication/usuario-detalhes',usuario.id]);
+            }
+        });
         this.route.params
             .switchMap((params: Params) => this.usuarioService.getUsuarios())
             .subscribe(usuarios => this.usuarios = usuarios);

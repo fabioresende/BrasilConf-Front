@@ -51,10 +51,9 @@ var UsuarioDetalhesComponent = (function () {
         this.location.back();
     };
     UsuarioDetalhesComponent.prototype.salvarUsuario = function (usuario, isValid) {
-        this.usuario = usuario;
-        this.setTipoUsuario(usuario);
+        usuario = this.setTipoUsuario(usuario);
         if (isValid) {
-            this.usuarioService.salvarUsuario(this.usuario).then(function (data) {
+            this.usuarioService.salvarUsuario(usuario).then(function (data) {
             });
         }
     };
@@ -72,7 +71,17 @@ var UsuarioDetalhesComponent = (function () {
         });
     };
     UsuarioDetalhesComponent.prototype.setTipoUsuario = function (usuario) {
-        this.usuario.id_tipo_usuario = this.tiposUsuario.indexOf(usuario.id_tipo_usuario);
+        usuario.id = this.usuario.id;
+        usuario.id_usuarioadm = this.usuario.id_usuarioadm;
+        usuario.id_fornecedor = this.usuario.id_fornecedor;
+        usuario.id_tipo_usuario = this.tiposUsuario.indexOf(usuario.id_tipo_usuario) + 1;
+        if (usuario.status == "Ativo") {
+            usuario.status = 1;
+        }
+        else {
+            usuario.status = 1;
+        }
+        return usuario;
     };
     UsuarioDetalhesComponent.prototype.routerParams = function (params) {
         var parametros = params.split("/");
