@@ -20,10 +20,20 @@ var LojaComponent = (function () {
         this.lojaService = lojaService;
         this.location = location;
         this.events = [];
+        this.selected = [];
+        this.selectedChange = new core_1.EventEmitter();
         this.loja = new Loja_1.Loja();
         this.lojaSelecionado = 1;
     }
     ;
+    LojaComponent.prototype.setChecked = function (id) {
+        var selecionado = this.selected.indexOf(id);
+        if (selecionado === -1)
+            this.selected.push(id);
+        else
+            this.selected.splice(selecionado, 1);
+        this.selectedChange.emit(this.selected);
+    };
     LojaComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.lojaService.getLoja().then(function (data) {
@@ -31,6 +41,11 @@ var LojaComponent = (function () {
             if (data) {
                 _this.lojaService.getAreasRelacionadas().then(function (data) {
                     _this.areas = data;
+                    _this.areas.forEach(function (area) {
+                        if (area.checked) {
+                            _this.selected.push(area.id);
+                        }
+                    });
                 });
             }
             else {
@@ -58,12 +73,16 @@ var LojaComponent = (function () {
         this.location.back();
     };
     LojaComponent.prototype.salvarLoja = function (loja, isValid) {
-        loja.id_loja = this.loja.id_loja;
+        loja.id = this.loja.id;
+        loja.areas = this.selected;
         if (isValid) {
-            console.log(loja);
             this.lojaService.salvarLoja(loja);
         }
     };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], LojaComponent.prototype, "selectedChange", void 0);
     LojaComponent = __decorate([
         core_1.Component({
             selector: 'loja',

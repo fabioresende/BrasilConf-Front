@@ -1,7 +1,7 @@
 import {Area} from "./Area";
 
 export class Loja {
-    id_loja: number;
+    id: number;
     nome: string;
     nome_fantasia: string;
     telefone: string;

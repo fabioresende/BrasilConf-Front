@@ -2,47 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7871da8-a0e6-4c15-b8d3-e33abf78e8b2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.routes.js" afterPath="$PROJECT_DIR$/app/app.routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.routes.js.map" afterPath="$PROJECT_DIR$/app/app.routes.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.routes.ts" afterPath="$PROJECT_DIR$/app/app.routes.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/autentication/auth.service.js" afterPath="$PROJECT_DIR$/app/dashboard/autentication/auth.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/autentication/auth.service.js.map" afterPath="$PROJECT_DIR$/app/dashboard/autentication/auth.service.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/autentication/auth.service.ts" afterPath="$PROJECT_DIR$/app/dashboard/autentication/auth.service.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/dashboard.routes.js" afterPath="$PROJECT_DIR$/app/dashboard/dashboard.routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/dashboard.routes.js.map" afterPath="$PROJECT_DIR$/app/dashboard/dashboard.routes.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/dashboard.routes.ts" afterPath="$PROJECT_DIR$/app/dashboard/dashboard.routes.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/fornecedor/Fornecedor.js.map" afterPath="$PROJECT_DIR$/app/dashboard/fornecedor/Fornecedor.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/fornecedor/fornecedor.component.html" afterPath="$PROJECT_DIR$/app/dashboard/fornecedor/fornecedor.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/fornecedor/fornecedor.component.js" afterPath="$PROJECT_DIR$/app/dashboard/fornecedor/fornecedor.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/fornecedor/fornecedor.component.js.map" afterPath="$PROJECT_DIR$/app/dashboard/fornecedor/fornecedor.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/fornecedor/fornecedor.component.ts" afterPath="$PROJECT_DIR$/app/dashboard/fornecedor/fornecedor.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/fornecedor/fornecedor.service.js" afterPath="$PROJECT_DIR$/app/dashboard/fornecedor/fornecedor.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/fornecedor/fornecedor.service.js.map" afterPath="$PROJECT_DIR$/app/dashboard/fornecedor/fornecedor.service.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/user/Usuario.js.map" afterPath="$PROJECT_DIR$/app/dashboard/user/Usuario.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/user/Usuario.ts" afterPath="$PROJECT_DIR$/app/dashboard/user/Usuario.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/user/user.component.js" afterPath="$PROJECT_DIR$/app/dashboard/user/user.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/user/user.component.js.map" afterPath="$PROJECT_DIR$/app/dashboard/user/user.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/user/user.component.ts" afterPath="$PROJECT_DIR$/app/dashboard/user/user.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/usuario-detalhes/usuario-detalhes.component.js" afterPath="$PROJECT_DIR$/app/dashboard/usuario-detalhes/usuario-detalhes.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/usuario-detalhes/usuario-detalhes.component.js.map" afterPath="$PROJECT_DIR$/app/dashboard/usuario-detalhes/usuario-detalhes.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/sidebar/sidebar-routes.config.js" afterPath="$PROJECT_DIR$/app/sidebar/sidebar-routes.config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/sidebar/sidebar-routes.config.js.map" afterPath="$PROJECT_DIR$/app/sidebar/sidebar-routes.config.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/sidebar/sidebar-routes.config.ts" afterPath="$PROJECT_DIR$/app/sidebar/sidebar-routes.config.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/sidebar/sidebar.component.js" afterPath="$PROJECT_DIR$/app/sidebar/sidebar.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/sidebar/sidebar.component.js.map" afterPath="$PROJECT_DIR$/app/sidebar/sidebar.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/sidebar/sidebar.component.ts" afterPath="$PROJECT_DIR$/app/sidebar/sidebar.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/sidebar/sidebar.metadata.ts" afterPath="$PROJECT_DIR$/app/sidebar/sidebar.metadata.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/sidebar-moving-tab.js" afterPath="$PROJECT_DIR$/assets/js/sidebar-moving-tab.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../pds2-financeira1/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../pds2-financeira1/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../pds2-financeira1/app/Http/Business/ProdutoBO.php" afterPath="$PROJECT_DIR$/../pds2-financeira1/app/Http/Business/ProdutoBO.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../pds2-financeira1/app/Http/Business/UsuarioBO.php" afterPath="$PROJECT_DIR$/../pds2-financeira1/app/Http/Business/UsuarioBO.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../pds2-financeira1/app/Http/Controllers/ProdutoController.php" afterPath="$PROJECT_DIR$/../pds2-financeira1/app/Http/Controllers/ProdutoController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../pds2-financeira1/app/Http/routes.php" afterPath="$PROJECT_DIR$/../pds2-financeira1/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../pds2-financeira1/app/Produto.php" afterPath="$PROJECT_DIR$/../pds2-financeira1/app/Produto.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../pds2-financeira1/app/Usuario.php" afterPath="$PROJECT_DIR$/../pds2-financeira1/app/Usuario.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../pds2-financeira1/database/migrations/2017_06_14_203009_produtos.php" afterPath="$PROJECT_DIR$/../pds2-financeira1/database/migrations/2017_06_14_203009_produtos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/home/home.component.js.map" afterPath="$PROJECT_DIR$/app/dashboard/home/home.component.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/home/home.component.ts" afterPath="$PROJECT_DIR$/app/dashboard/home/home.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/loja/Area.ts" afterPath="$PROJECT_DIR$/app/dashboard/loja/Area.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/loja/Loja.ts" afterPath="$PROJECT_DIR$/app/dashboard/loja/Loja.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/loja/loja.component.html" afterPath="$PROJECT_DIR$/app/dashboard/loja/loja.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/loja/loja.component.js" afterPath="$PROJECT_DIR$/app/dashboard/loja/loja.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/dashboard/loja/loja.component.ts" afterPath="$PROJECT_DIR$/app/dashboard/loja/loja.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../pds2-financeira1/app/Http/Business/LojaBO.php" afterPath="$PROJECT_DIR$/../pds2-financeira1/app/Http/Business/LojaBO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../pds2-financeira1/app/Loja.php" afterPath="$PROJECT_DIR$/../pds2-financeira1/app/Loja.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../quickstart/package.json" afterPath="$PROJECT_DIR$/../quickstart/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../quickstart/src/app/app.module.ts" afterPath="$PROJECT_DIR$/../quickstart/src/app/app.module.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../quickstart/src/app/cliente.service.ts" afterPath="$PROJECT_DIR$/../quickstart/src/app/cliente.service.ts" />
@@ -77,18 +46,53 @@
         <item name="" type="eadb38e5:DatabaseStructure$Root" />
         <item name="@localhost" type="e3449647:DbNodeDescriptor" />
         <item name="brasilcred" type="e3449647:DbNodeDescriptor" />
-        <item name="usuarios" type="e3449647:DbNodeDescriptor" />
+        <item name="loja_area" type="e3449647:DbNodeDescriptor" />
       </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="loja.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/dashboard/loja/loja.component.html">
+      <file leaf-file-name="loja.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/dashboard/loja/loja.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="133" column="76" lean-forward="false" selection-start-line="133" selection-start-column="76" selection-end-line="133" selection-end-column="76" />
+            <state relative-caret-position="153">
+              <caret line="36" column="27" lean-forward="false" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Loja.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../pds2-financeira1/app/Loja.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="14" lean-forward="false" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lojas" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/d31c722f/ebe15dc3-9f76-4119-a138-e34042b8d750/brasilcred.lojas">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Loja.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/dashboard/loja/Loja.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="6" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -152,7 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../pds2-financeira1/app/Job.php" />
         <option value="$PROJECT_DIR$/../pds2-financeira1/database/migrations/2014_10_12_000000_create_users_table.php" />
         <option value="$PROJECT_DIR$/app/dashboard/dashboard.module.ts" />
         <option value="$PROJECT_DIR$/app/dashboard/user/user.component.css" />
@@ -194,15 +197,16 @@
         <option value="$PROJECT_DIR$/app/dashboard/dashboard.routes.ts" />
         <option value="$PROJECT_DIR$/app/app.routes.ts" />
         <option value="$PROJECT_DIR$/app/sidebar/sidebar-routes.config.ts" />
-        <option value="$PROJECT_DIR$/../pds2-financeira1/app/Loja.php" />
-        <option value="$PROJECT_DIR$/app/dashboard/loja/Loja.ts" />
-        <option value="$PROJECT_DIR$/app/dashboard/loja/Area.ts" />
         <option value="$PROJECT_DIR$/../pds2-financeira1/app/Http/Controllers/LojaController.php" />
         <option value="$PROJECT_DIR$/../pds2-financeira1/app/Http/routes.php" />
-        <option value="$PROJECT_DIR$/../pds2-financeira1/app/Http/Business/LojaBO.php" />
-        <option value="$PROJECT_DIR$/app/dashboard/loja/loja.component.ts" />
         <option value="$PROJECT_DIR$/app/dashboard/loja/loja.service.ts" />
+        <option value="$PROJECT_DIR$/app/dashboard/loja/Area.ts" />
         <option value="$PROJECT_DIR$/app/dashboard/loja/loja.component.html" />
+        <option value="$PROJECT_DIR$/app/dashboard/home/home.component.ts" />
+        <option value="$PROJECT_DIR$/../pds2-financeira1/app/Http/Business/LojaBO.php" />
+        <option value="$PROJECT_DIR$/app/dashboard/loja/Loja.ts" />
+        <option value="$PROJECT_DIR$/../pds2-financeira1/app/Loja.php" />
+        <option value="$PROJECT_DIR$/app/dashboard/loja/loja.component.ts" />
       </list>
     </option>
   </component>
@@ -291,6 +295,14 @@
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="dashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="home" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="BrasilConf-Front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BrasilConf-Front" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="dashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="home" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="home.component.ts" type="620a8d5e:NestingTreeNode" />
             </path>
           </expand>
           <select />
@@ -435,12 +447,12 @@
       <workItem from="1497647753297" duration="9521000" />
       <workItem from="1497712476570" duration="9253000" />
       <workItem from="1497806873285" duration="8291000" />
-      <workItem from="1497898895661" duration="257000" />
+      <workItem from="1497898895661" duration="7306000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116946000" />
+    <option name="totallyTimeSpent" value="123995000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -597,25 +609,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="dbDummy://dbtable:/d31c722f/ebe15dc3-9f76-4119-a138-e34042b8d750/brasilcred.fornecedors">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pds2-financeira1/database/migrations/2017_03_18_161650_up.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../pds2-financeira1/database/migrations/2017_06_15_130938_edit_tabela_produtos.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -725,6 +718,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-527">
           <caret line="25" column="43" lean-forward="false" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -798,6 +792,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#38#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -805,6 +802,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="25" column="51" lean-forward="true" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#38#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -826,6 +826,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -833,6 +834,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -840,27 +842,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pds2-financeira1/app/Loja.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/dashboard/loja/Area.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="21" lean-forward="false" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/dashboard/loja/Loja.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -885,44 +867,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/d31c722f/ebe15dc3-9f76-4119-a138-e34042b8d750/brasilcred.lojas">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/d31c722f/ebe15dc3-9f76-4119-a138-e34042b8d750/brasilcred.loja_area">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pds2-financeira1/app/Http/Controllers/LojaController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="54" column="38" lean-forward="true" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pds2-financeira1/app/Http/Business/LojaBO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="70" column="53" lean-forward="true" selection-start-line="70" selection-start-column="53" selection-end-line="70" selection-end-column="53" />
         </state>
       </provider>
     </entry>
@@ -956,16 +900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/dashboard/loja/loja.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="42" column="11" lean-forward="false" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/dashboard/home/home.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5542">
@@ -987,10 +921,102 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/dashboard/loja/Area.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/dashboard/loja/loja.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="133" column="76" lean-forward="false" selection-start-line="133" selection-start-column="76" selection-end-line="133" selection-end-column="76" />
+        <state relative-caret-position="254">
+          <caret line="133" column="133" lean-forward="false" selection-start-line="133" selection-start-column="133" selection-end-line="133" selection-end-column="133" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../pds2-financeira1/app/Http/Controllers/LojaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="71" column="37" lean-forward="false" selection-start-line="71" selection-start-column="37" selection-end-line="71" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/dashboard/dashboard.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/dashboard/home/home.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="38" lean-forward="false" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#92#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/d31c722f/ebe15dc3-9f76-4119-a138-e34042b8d750/brasilcred.loja_area">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../pds2-financeira1/app/Http/Business/LojaBO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/dashboard/loja/Loja.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="6" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/d31c722f/ebe15dc3-9f76-4119-a138-e34042b8d750/brasilcred.lojas">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../pds2-financeira1/app/Loja.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="14" lean-forward="false" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/dashboard/loja/loja.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="36" column="27" lean-forward="false" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
           <folding />
         </state>
       </provider>

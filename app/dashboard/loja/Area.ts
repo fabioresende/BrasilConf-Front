@@ -1,5 +1,5 @@
 export class Area {
-    id_area: number;
+    id: number;
     descricao: string;
     checked: boolean;
 }

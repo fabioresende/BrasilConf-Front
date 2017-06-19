@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import 'rxjs/add/operator/switchMap';
 import {LojaService} from './loja.service';
@@ -7,6 +7,8 @@ import {Location} from '@angular/common';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import {AuthService} from '../autentication/auth.service';
 import {Area} from "./Area";
+import forEach = require("core-js/fn/array/for-each");
+
 @Component({
     selector: 'loja',
     moduleId: module.id,
@@ -20,6 +22,7 @@ export class LojaComponent implements OnInit {
     private lojaSelecionado;
     public events: any[] = [];
     private areas: Array<Area>;
+    private selected = [];
     constructor(private lojaService: LojaService,
                 private location: Location,
                 ) {
@@ -28,12 +31,26 @@ export class LojaComponent implements OnInit {
         this.lojaSelecionado = 1;
     };
 
+    @Output() selectedChange:EventEmitter<any> = new EventEmitter();
+
+    setChecked(id) {
+        let selecionado = this.selected.indexOf(id);
+        if (selecionado === -1) this.selected.push(id);
+        else this.selected.splice(selecionado, 1);
+        this.selectedChange.emit(this.selected);
+    }
+
     ngOnInit() {
         this.lojaService.getLoja().then((data)=>{
             this.loja = data;
             if (data) {
                 this.lojaService.getAreasRelacionadas().then((data)=>{
                     this.areas = data;
+                    this.areas.forEach(area => {
+                        if (area.checked){
+                            this.selected.push(area.id);
+                        }
+                    })
                 });
             } else{
                 this.lojaService.getAreas().then((data)=>{
@@ -54,7 +71,6 @@ export class LojaComponent implements OnInit {
             url_logo: new FormControl('',[<any>Validators.required]),
             url_site: new FormControl('',[<any>Validators.required]),
             nome_fantasia: new FormControl(''),
-
         });
     }
 
@@ -63,9 +79,9 @@ export class LojaComponent implements OnInit {
     }
 
     salvarLoja(loja: Loja, isValid: boolean): void {
-        loja.id_loja = this.loja.id_loja;
+        loja.id = this.loja.id;
+        loja.areas = this.selected;
         if (isValid) {
-            console.log(loja);
             this.lojaService.salvarLoja(loja);
         }
     }

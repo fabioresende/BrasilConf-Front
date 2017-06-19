@@ -131,7 +131,7 @@
                                                     <td class="col-md-2">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" name="optionsCheckboxes" [attr.checked]="area.checked ? 'checked' : null">
+                                                                <input type="checkbox" name="optionsCheckboxes" (click) = "setChecked(area.id)" [attr.checked]="area.checked ? 'checked' : null">
                                                             </label>
                                                         </div>
                                                     </td>
