@@ -12,6 +12,7 @@ var fornecedor_component_1 = require("./dashboard/fornecedor/fornecedor.componen
 var produto_component_1 = require("./dashboard/produto/produto.component");
 var produto_detalhes_component_1 = require("./dashboard/produto-detalhes/produto-detalhes.component");
 var loja_component_1 = require("./dashboard/loja/loja.component");
+var venda_component_1 = require("./dashboard/venda/venda.component");
 exports.APP_MODULE_ROUTES = [
     { path: 'aplication', component: aplication_component_1.AplicationComponent,
         children: [
@@ -25,7 +26,8 @@ exports.APP_MODULE_ROUTES = [
             { path: 'fornecedor', component: fornecedor_component_1.FornecedorComponent },
             { path: 'produto', component: produto_component_1.ProdutoComponent },
             { path: 'produto-detalhes/:id', component: produto_detalhes_component_1.ProdutoDetalhesComponent },
-            { path: 'loja', component: loja_component_1.LojaComponent }
+            { path: 'loja', component: loja_component_1.LojaComponent },
+            { path: 'venda', component: venda_component_1.VendaComponent }
         ] },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: '', redirectTo: 'login', pathMatch: 'full' }

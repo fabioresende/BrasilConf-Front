@@ -10,6 +10,7 @@ var fornecedor_component_1 = require('./fornecedor/fornecedor.component');
 var produto_component_1 = require("./produto/produto.component");
 var produto_detalhes_component_1 = require("./produto-detalhes/produto-detalhes.component");
 var loja_component_1 = require("./loja/loja.component");
+var venda_component_1 = require("./venda/venda.component");
 exports.MODULE_ROUTES = [];
 exports.MODULE_COMPONENTS = [
     home_component_1.HomeComponent,
@@ -22,6 +23,7 @@ exports.MODULE_COMPONENTS = [
     fornecedor_component_1.FornecedorComponent,
     produto_component_1.ProdutoComponent,
     produto_detalhes_component_1.ProdutoDetalhesComponent,
-    loja_component_1.LojaComponent
+    loja_component_1.LojaComponent,
+    venda_component_1.VendaComponent
 ];
 //# sourceMappingURL=dashboard.routes.js.map

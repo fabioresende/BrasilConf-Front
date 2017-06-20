@@ -13,6 +13,7 @@ import {FornecedorComponent} from "./dashboard/fornecedor/fornecedor.component";
 import {ProdutoComponent} from "./dashboard/produto/produto.component";
 import {ProdutoDetalhesComponent} from "./dashboard/produto-detalhes/produto-detalhes.component";
 import {LojaComponent} from "./dashboard/loja/loja.component";
+import {VendaComponent} from "./dashboard/venda/venda.component";
 
 export const APP_MODULE_ROUTES: Route[] = [
     {path: 'aplication', component: AplicationComponent,
@@ -27,7 +28,8 @@ export const APP_MODULE_ROUTES: Route[] = [
             {path: 'fornecedor', component: FornecedorComponent},
             {path: 'produto', component: ProdutoComponent},
             {path: 'produto-detalhes/:id', component: ProdutoDetalhesComponent},
-            {path: 'loja', component: LojaComponent}
+            {path: 'loja', component: LojaComponent},
+            {path: 'venda', component: VendaComponent}
         ]},
     {path: 'login', component: LoginComponent},
     {path: '', redirectTo: 'login', pathMatch: 'full'}
