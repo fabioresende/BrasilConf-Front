@@ -1,0 +1,94 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="content" style="padding: 20px;">
+                <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div>
+                            <img src="{{produto.url_foto}}">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="card-title category">
+                                    {{produto.nome}}
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <h3>Preço:</h3>
+                                </div>
+                                <div class="row">
+                                    <span>R$ </span>
+                                    <span>{{produto.preco}}</span>
+                                    <span>à <b>vista</b></span>
+                                    <span>(10% Desc. já calculado)</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-success">
+                                    <i class="material-icons">shopping_cart</i>
+                                    Comprar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3 class="h3">Detalhes do Produto</h3>
+                        <p class="card-content">{{produto.descricao}}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-profile">
+                            <div class="card-avatar">
+                                <a href="#pablo">
+                                    <img class="img" src="{{produto.fornecedor.url_logo}}"/>
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h6 class="category text-gray">Gold / Fornecedor</h6>
+                                <h4 class="card-title">{{produto.fornecedor.nome}}</h4>
+                                <p class="card-content">
+                                    {{produto.fornecedor.historia}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Informações</h3>
+                    </div>
+                    <div class="card-content table-responsive col-md-8">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <td class="col-md-3">Fabricante</td>
+                                <td class="col-md-3">{{produto.fabricante}}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-3">Altura</td>
+                                <td class="col-md-3">{{produto.altura}}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-3">Largura</td>
+                                <td class="col-md-3">{{produto.largura}}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-3">Departamento</td>
+                                <td class="col-md-3">{{produto.departamento.descricao}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

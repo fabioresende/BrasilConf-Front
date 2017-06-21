@@ -13,6 +13,7 @@ import {ProdutoComponent} from "./produto/produto.component";
 import {ProdutoDetalhesComponent} from "./produto-detalhes/produto-detalhes.component";
 import {LojaComponent} from "./loja/loja.component";
 import {VendaComponent} from "./venda/venda.component";
+import {VendaDetalhesComponent} from "./venda-detalhes/venda-detalhes.component";
 export const MODULE_ROUTES: Route[] = [
     //{path: 'aplication/home', component: HomeComponent},
 ]
@@ -29,5 +30,6 @@ export const MODULE_COMPONENTS = [
     ProdutoComponent,
     ProdutoDetalhesComponent,
     LojaComponent,
-    VendaComponent
+    VendaComponent,
+    VendaDetalhesComponent
 ]

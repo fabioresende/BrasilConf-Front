@@ -1,7 +1,7 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4 ct-chart-line"   *ngFor="let produto of produtos">
+            <div class="col-md-4 ct-chart-line" *ngFor="let produto of produtos">
                 <div class="card card-profile">
                     <div class="card-header row card-header-primary">
                         <div class="col-md-3">
@@ -13,13 +13,17 @@
                     </div>
 
                     <div class="content">
-                        <img class='col-md-12' src="{{produto.url_foto}}">
+                        <div class="col-md-12 container-image">
+                            <img class='imagem-produto' src="{{produto.url_foto}}">
+                        </div>
                         <h6 class="category text-gray">Gold / Fornecedor</h6>
-                        <h4 class="card-title">{{produto.nome}}</h4>
+                        <div class="nome-produto">
+                            <h4 class="card-title paragrafo-produto">{{produto.nome}}</h4>
+                        </div>
                         <p class="card-content">
                             Preço: R${{produto.preco}}
                         </p>
-                        <div href="#pablo" class="btn btn-success btn-round">Comprar</div>
+                        <div href="#pablo" class="btn btn-success btn-round" (click)="compraProduto(produto.id)">Comprar</div>
                     </div>
                 </div>
             </div>
