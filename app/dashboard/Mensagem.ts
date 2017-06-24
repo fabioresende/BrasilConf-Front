@@ -1,4 +1,4 @@
 export class Mensagem {
-    success: boolean;
+    success: string;
     msg: string;
 }

@@ -1,0 +1,18 @@
+.btn-float-right{
+    position: relative;
+    float: right;
+    right: 0px;
+}
+.btn-tranparent{
+    background-color: rgba(255,255,255,0);
+    border: 1px solid white;
+
+}
+.btn-tranparent:hover{
+    background-color: rgba(255,255,255,0.3);
+    border: 1px solid white;
+
+}
+.imagem-produto-pedido{
+    width: 50px;
+}

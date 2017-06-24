@@ -8,16 +8,17 @@ import {NotificationsComponent} from './notifications/notifications.component';
 import {TypographyComponent} from './typography/typography.component';
 import {MapsComponent} from './maps/maps.component';
 import {UsuarioDetalhesComponent} from './usuario-detalhes/usuario-detalhes.component';
+import {FornecedorComponent} from './fornecedor/fornecedor.component';
+import {ProdutoComponent} from "./produto/produto.component";
+import {ProdutoDetalhesComponent} from "./produto-detalhes/produto-detalhes.component";
+import {LojaComponent} from "./loja/loja.component";
+import {VendaComponent} from "./venda/venda.component";
+import {VendaDetalhesComponent} from "./venda-detalhes/venda-detalhes.component";
+import {PedidoVendaComponent} from "./pedido-venda/pedido-venda.component";
+import {PedidoComponent} from "./pedido/pedido.component";
+import {PedidoDetalhesComponent} from "./pedido-detalhes/pedido-detalhes.component";
 export const MODULE_ROUTES: Route[] = [
-    {path: 'dashboard', component: HomeComponent},
-    {path: 'user', component: UserComponent},
-    {path: 'table', component: TableComponent},
-    {path: 'icons', component: IconsComponent},
-    {path: 'notifications', component: NotificationsComponent},
-    {path: 'typography', component: TypographyComponent},
-    {path: 'maps', component: MapsComponent},
-    {path: 'usuario-detalhes/:id', component: UsuarioDetalhesComponent},
-    {path: '', redirectTo: 'dashboard', pathMatch: 'full'}
+    //{path: 'aplication/home', component: HomeComponent},
 ]
 
 export const MODULE_COMPONENTS = [
@@ -27,6 +28,14 @@ export const MODULE_COMPONENTS = [
     IconsComponent,
     NotificationsComponent,
     TypographyComponent,
-    MapsComponent,
-    UsuarioDetalhesComponent
+    UsuarioDetalhesComponent,
+    FornecedorComponent,
+    ProdutoComponent,
+    ProdutoDetalhesComponent,
+    LojaComponent,
+    VendaComponent,
+    VendaDetalhesComponent,
+    PedidoVendaComponent,
+    PedidoComponent,
+    PedidoDetalhesComponent
 ]

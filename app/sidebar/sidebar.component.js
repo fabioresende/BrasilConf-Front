@@ -10,20 +10,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var sidebar_routes_config_1 = require('./sidebar-routes.config');
+var auth_service_1 = require("../dashboard/autentication/auth.service");
+var Usuario_1 = require("../dashboard/user/Usuario");
 var SidebarComponent = (function () {
-    function SidebarComponent() {
+    function SidebarComponent(authService) {
+        this.authService = authService;
+        this.usuario = new Usuario_1.Usuario();
+        this.menuItems = new Array();
     }
+    ;
     SidebarComponent.prototype.ngOnInit = function () {
-        $.getScript('../../assets/js/sidebar-moving-tab.js');
-        this.menuItems = sidebar_routes_config_1.ROUTES.filter(function (menuItem) { return menuItem; });
+        var _this = this;
+        this.authService.getUsuarioLogado().then(function (usuario) {
+            _this.usuario = usuario;
+            _this.menuItems = sidebar_routes_config_1.ROUTES.filter(mostrarMenu(_this.usuario));
+            function mostrarMenu(usuario) {
+                return function (menuItem) {
+                    if ($.inArray(usuario.tipo_empresa.toString(), menuItem.permissao) != -1) {
+                        return menuItem;
+                    }
+                };
+            }
+            $.getScript('../../assets/js/sidebar-moving-tab.js');
+        });
     };
     SidebarComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'sidebar-cmp',
             templateUrl: 'sidebar.component.html',
+            providers: [auth_service_1.AuthService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [auth_service_1.AuthService])
     ], SidebarComponent);
     return SidebarComponent;
 }());

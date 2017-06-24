@@ -5,19 +5,17 @@ var icons_component_1 = require('./icons/icons.component');
 var table_component_1 = require('./table/table.component');
 var notifications_component_1 = require('./notifications/notifications.component');
 var typography_component_1 = require('./typography/typography.component');
-var maps_component_1 = require('./maps/maps.component');
 var usuario_detalhes_component_1 = require('./usuario-detalhes/usuario-detalhes.component');
-exports.MODULE_ROUTES = [
-    { path: 'dashboard', component: home_component_1.HomeComponent },
-    { path: 'user', component: user_component_1.UserComponent },
-    { path: 'table', component: table_component_1.TableComponent },
-    { path: 'icons', component: icons_component_1.IconsComponent },
-    { path: 'notifications', component: notifications_component_1.NotificationsComponent },
-    { path: 'typography', component: typography_component_1.TypographyComponent },
-    { path: 'maps', component: maps_component_1.MapsComponent },
-    { path: 'usuario-detalhes/:id', component: usuario_detalhes_component_1.UsuarioDetalhesComponent },
-    { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
-];
+var fornecedor_component_1 = require('./fornecedor/fornecedor.component');
+var produto_component_1 = require("./produto/produto.component");
+var produto_detalhes_component_1 = require("./produto-detalhes/produto-detalhes.component");
+var loja_component_1 = require("./loja/loja.component");
+var venda_component_1 = require("./venda/venda.component");
+var venda_detalhes_component_1 = require("./venda-detalhes/venda-detalhes.component");
+var pedido_venda_component_1 = require("./pedido-venda/pedido-venda.component");
+var pedido_component_1 = require("./pedido/pedido.component");
+var pedido_detalhes_component_1 = require("./pedido-detalhes/pedido-detalhes.component");
+exports.MODULE_ROUTES = [];
 exports.MODULE_COMPONENTS = [
     home_component_1.HomeComponent,
     user_component_1.UserComponent,
@@ -25,7 +23,15 @@ exports.MODULE_COMPONENTS = [
     icons_component_1.IconsComponent,
     notifications_component_1.NotificationsComponent,
     typography_component_1.TypographyComponent,
-    maps_component_1.MapsComponent,
-    usuario_detalhes_component_1.UsuarioDetalhesComponent
+    usuario_detalhes_component_1.UsuarioDetalhesComponent,
+    fornecedor_component_1.FornecedorComponent,
+    produto_component_1.ProdutoComponent,
+    produto_detalhes_component_1.ProdutoDetalhesComponent,
+    loja_component_1.LojaComponent,
+    venda_component_1.VendaComponent,
+    venda_detalhes_component_1.VendaDetalhesComponent,
+    pedido_venda_component_1.PedidoVendaComponent,
+    pedido_component_1.PedidoComponent,
+    pedido_detalhes_component_1.PedidoDetalhesComponent
 ];
 //# sourceMappingURL=dashboard.routes.js.map

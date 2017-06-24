@@ -1,0 +1,24 @@
+.card-header-primary{
+    background-color: #1b6d85;
+    color:white;
+}
+.imagem-produto{
+    width: 300px;
+}
+.container-image {
+    height: 200px;
+    overflow: hidden; /* Faz o div não aumentar a altura por causa da imagem */
+}
+
+.imagem-produto {
+    width: 100%;
+}
+.paragrafo-produto{
+    font-size: 15px;
+}
+.nome-produto{
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 30px;
+    overflow: hidden;
+}

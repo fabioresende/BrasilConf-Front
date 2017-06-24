@@ -1,0 +1,39 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="red">
+                        <h4 class="title">Pedido</h4>
+                        <p class="category">Esses são todos os seus pedidos</p>
+                    </div>
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <thead class="text-danger">
+                            <tr>
+                                <th>Codigo Pedido</th>
+                                <th>Produto</th>
+                                <th>Status</th>
+                                <th>Acão</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let pedido of pedidos">
+                                <td class="col-md-3">{{pedido.id}}</td>
+                                <td class="col-md-3">{{pedido.produto.nome}}</td>
+                                <td class="col-md-2">{{pedido.status}}</td>
+                                <td class="col-md-2">
+                                    <button class="btn btn-success btn-sm" (click)="editarPedido(pedido.id)">
+                                        <i data-notify="icon" class="material-icons">list</i>
+                                        Ver
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

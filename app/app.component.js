@@ -15,18 +15,6 @@ var AppComponent = (function () {
         this.location = location;
     }
     AppComponent.prototype.ngOnInit = function () {
-        $.getScript('../assets/js/material-dashboard.js');
-        $.getScript('../assets/js/initMenu.js');
-    };
-    AppComponent.prototype.isMaps = function (path) {
-        var titlee = this.location.prepareExternalUrl(this.location.path());
-        titlee = titlee.slice(1);
-        if (path == titlee) {
-            return false;
-        }
-        else {
-            return true;
-        }
     };
     AppComponent = __decorate([
         core_1.Component({

@@ -1,0 +1,134 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header" data-background-color="red">
+                        <h4 class="title">Fornecedor</h4>
+                        <p class="category">Complete as informações do seu cadastro</p>
+                    </div>
+                    <div class="card-content">
+                        <form [formGroup]="formulario" novalidate (ngSubmit)="salvarFornecedor(formulario.value, formulario.valid)">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group form-black">
+                                        <label class="control-label" for="nome">Nome</label>
+                                        <input type="text" class="form-control" formControlName="nome" id="nome" [ngModel]="fornecedor.nome">
+                                        <small [hidden]="formulario.controls.nome.valid || (formulario.controls.nome.pristine)" class="text-danger">
+                                            Informe um nome valido (minimum 5 characters).
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">CNPJ</label>
+                                        <input type="text" class="form-control" formControlName="cnpj" [ngModel]="fornecedor.cnpj">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Telefone</label>
+                                        <input type="text" class="form-control" formControlName="telefone" [ngModel]="fornecedor.telefone">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Cep</label>
+                                        <input type="text" class="form-control" formControlName="cep" [ngModel]="fornecedor.cep">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Estado</label>
+                                        <input type="text" class="form-control" formControlName="estado" [ngModel]="fornecedor.estado">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Cidade</label>
+                                        <input type="text" class="form-control" formControlName="cidade" [ngModel]="fornecedor.cidade">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Tipo Logradouro</label>
+                                        <input type="text" class="form-control" formControlName="tipo_logradouro" [ngModel]="fornecedor.tipo_logradouro">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Rua</label>
+                                        <input type="text" class="form-control" formControlName="logradouro" [ngModel]="fornecedor.logradouro">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Número</label>
+                                        <input type="text" class="form-control" formControlName="numero" [ngModel]="fornecedor.numero">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">Logo</label>
+                                        <input type="text" class="form-control" formControlName="url_logo" [ngModel]="fornecedor.url_logo">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-black">
+                                        <label class="control-label">História do Fornecedor</label>
+                                        <textarea class="form-control" rows="8" placeholder="Descreva uma breve história da marca" formControlName="historia" [ngModel]="fornecedor.historia"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success pull-right" [disabled]="!formulario.valid">Salvar</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <a href="#pablo">
+                            <img class="img" src="{{fornecedor.url_logo}}"/>
+                        </a>
+                    </div>
+
+                    <div class="content">
+                        <h6 class="category text-gray">Gold / Fornecedor</h6>
+                        <h4 class="card-title">{{fornecedor.nome}}</h4>
+                        <p class="card-content">
+                            {{fornecedor.historia}}
+                        </p>
+                        <div href="#pablo" class="btn btn-danger btn-round">Follow</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-alert" *ngIf="cardMensagem">
+    <div class="card col-md-8">
+        <div [attr.class]="mensagem.success == 'Sucesso' ? 'modal-success card-header' : 'modal-danger card-header'">{{mensagem.success}}</div>
+        <div class="card-content">
+            <div class="row">
+                {{mensagem.msg}}
+            </div>
+            <div class="card-footer" *ngIf="cardMensagem">
+                <button class="btn btn-success pull-right" (click)="blurCardMensagem()">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sombra-modal" *ngIf="cardMensagem" (click)="blurCardMensagem()">
+
+</div>
