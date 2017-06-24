@@ -42,6 +42,12 @@ var LojaService = (function () {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     };
+    LojaService.prototype.getCep = function (cep) {
+        return this.http.get("/cep/" + cep)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(function (response) { return response.json(); });
+    };
     LojaService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

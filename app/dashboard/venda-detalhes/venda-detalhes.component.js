@@ -39,6 +39,9 @@ var VendaDetalhesComponent = (function () {
         var parametro = parametros[3];
         return parametro;
     };
+    VendaDetalhesComponent.prototype.comprar = function () {
+        this.router.navigate(['/aplication/pedido-venda', this.produto.id]);
+    };
     VendaDetalhesComponent = __decorate([
         core_1.Component({
             selector: 'venda-detalhes-cmp',

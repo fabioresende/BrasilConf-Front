@@ -6,6 +6,7 @@ import {Fornecedor} from "./Fornecedor";
 import {Location} from '@angular/common';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import {AuthService} from '../autentication/auth.service';
+import {Mensagem} from "../Mensagem";
 @Component({
     selector: 'fornecedor',
     moduleId: module.id,
@@ -18,6 +19,8 @@ export class FornecedorComponent implements OnInit {
     private fornecedor: Fornecedor;
     private fornecedorSelecionado;
     public events: any[] = [];
+    public mensagem: Mensagem;
+    public cardMensagem: boolean;
     constructor(private fornecedorService: FornecedorService,
                 private location: Location,
                 ) {
@@ -52,8 +55,14 @@ export class FornecedorComponent implements OnInit {
     salvarFornecedor(fornecedor: Fornecedor, isValid: boolean): void {
         fornecedor.id = this.fornecedor.id;
         if (isValid) {
-            console.log(fornecedor);
-            this.fornecedorService.salvarFornecedor(fornecedor);
+            this.fornecedorService.salvarFornecedor(fornecedor).then((data) => {
+                this.mensagem = data;
+                this.cardMensagem = true;
+            });
         }
+    }
+
+    blurCardMensagem(){
+        this.cardMensagem = false;
     }
 }

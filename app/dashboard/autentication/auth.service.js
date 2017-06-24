@@ -59,6 +59,9 @@ var AuthService = (function () {
     };
     AuthService.prototype.loggedIn = function () {
         var token = localStorage.getItem('id_token');
+        if (!token) {
+            return false;
+        }
         return !this.jwtHelper.isTokenExpired(token);
     };
     AuthService = __decorate([

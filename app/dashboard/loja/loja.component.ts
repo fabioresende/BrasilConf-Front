@@ -8,6 +8,7 @@ import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import {AuthService} from '../autentication/auth.service';
 import {Area} from "./Area";
 import forEach = require("core-js/fn/array/for-each");
+import {Mensagem} from "../Mensagem";
 
 @Component({
     selector: 'loja',
@@ -23,10 +24,14 @@ export class LojaComponent implements OnInit {
     public events: any[] = [];
     private areas: Array<Area>;
     private selected = [];
+    private cardMensagem: boolean;
+    private mensagem: Mensagem;
+    private cep;
     constructor(private lojaService: LojaService,
                 private location: Location,
                 ) {
-
+        this.cardMensagem = false;
+        this.mensagem = new Mensagem();
         this.loja = new Loja();
         this.lojaSelecionado = 1;
     };
@@ -82,7 +87,30 @@ export class LojaComponent implements OnInit {
         loja.id = this.loja.id;
         loja.areas = this.selected;
         if (isValid) {
-            this.lojaService.salvarLoja(loja);
+            this.lojaService.salvarLoja(loja).then((data) => {
+                this.mensagem = data;
+                this.cardMensagem = true;
+            });
         }
+    }
+
+    blurCardMensagem(){
+        this.cardMensagem = false;
+    }
+
+
+    buscarCep() {
+        this.lojaService.getCep(this.loja.cep).then((data)=>{
+            if (data.success == "Erro") {
+                this.mensagem = data;
+                this.cardMensagem = true;
+            } else {
+                this.cep = data;
+                this.loja.estado = this.cep.uf;
+                this.loja.logradouro = this.cep.logradouro;
+                this.loja.tipo_logradouro = this.cep.tipo_logradouro;
+                this.loja.cidade = this.cep.localidade;
+            }
+        });
     }
 }

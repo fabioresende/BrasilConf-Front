@@ -4,10 +4,9 @@
 }
 .imagem-produto{
     width: 300px;
-    height: 200px;
 }
 .container-image {
-    height: 200px;
+    height: 220px;
     overflow: hidden; /* Faz o div não aumentar a altura por causa da imagem */
 }
 

@@ -6,11 +6,13 @@ import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import {ProdutoService} from "../produto/produto.service";
 import {Produto} from "../produto/Produto";
 import {Fornecedor} from "../fornecedor/Fornecedor";
+import {Mensagem} from "../Mensagem";
+
 @Component({
     selector: 'produto-detalhes',
     moduleId: module.id,
     templateUrl: 'produto-detalhes.component.html',
-    styleUrls:['produto-detalhes.component.css'],
+    styleUrls: ['produto-detalhes.component.css'],
     providers: [ProdutoService]
 })
 
@@ -22,11 +24,12 @@ export class ProdutoDetalhesComponent implements OnInit {
     private descricaoDepartamento;
     private descricaoStatus;
     public events: any[] = [];
+    public mensagem: Mensagem;
+    public cardMensagem: boolean;
 
     constructor(private produtoService: ProdutoService,
                 private route: ActivatedRoute,
-                private location: Location,
-                ) {
+                private location: Location,) {
         this.produto = new Produto();
         this.produto.fornecedor = new Fornecedor();
         this.produtoSelecionado = this.routerParams(this.location.path());
@@ -36,7 +39,7 @@ export class ProdutoDetalhesComponent implements OnInit {
     ngOnInit() {
         if (this.produtoSelecionado != 0) {
             let param = this.routerParams(this.location.path());
-            this.produtoService.getProduto(param).then((produto) =>{
+            this.produtoService.getProduto(param).then((produto) => {
                 this.produto = produto;
             });
         }
@@ -64,7 +67,8 @@ export class ProdutoDetalhesComponent implements OnInit {
         produto = this.setDepartamento(produto);
         if (isValid) {
             this.produtoService.salvarProduto(produto).then((data) => {
-
+                this.mensagem = data;
+                this.cardMensagem = true;
             });
         }
     }
@@ -85,12 +89,12 @@ export class ProdutoDetalhesComponent implements OnInit {
     setDepartamento(produto) {
         produto.id = this.produto.id;
         produto.id_fornecedor = this.produto.id_fornecedor;
-        if (produto.id_departamento == "" ) {
-           produto.id_departamento = this.produto.id_departamento;
+        if (produto.id_departamento == "") {
+            produto.id_departamento = this.produto.id_departamento;
         } else {
-            produto.id_departamento = this.departamentos.indexOf(produto.id_departamento)+1;
+            produto.id_departamento = this.departamentos.indexOf(produto.id_departamento) + 1;
         }
-        if (produto.status == "" ) {
+        if (produto.status == "") {
             produto.status = this.produto.status;
         }
         else {
@@ -108,5 +112,7 @@ export class ProdutoDetalhesComponent implements OnInit {
         var parametro = parametros[3];
         return parametro;
     }
-
+    blurCardMensagem(){
+        this.cardMensagem = false;
+    }
 }

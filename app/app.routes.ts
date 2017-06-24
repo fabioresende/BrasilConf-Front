@@ -15,6 +15,10 @@ import {ProdutoDetalhesComponent} from "./dashboard/produto-detalhes/produto-det
 import {LojaComponent} from "./dashboard/loja/loja.component";
 import {VendaComponent} from "./dashboard/venda/venda.component";
 import {VendaDetalhesComponent} from "./dashboard/venda-detalhes/venda-detalhes.component";
+import {CanActivateViaAuthGuard} from "./dashboard/autentication/canActiveViaAuthGuard.service";
+import {PedidoVendaComponent} from "./dashboard/pedido-venda/pedido-venda.component";
+import {PedidoComponent} from "./dashboard/pedido/pedido.component";
+import {PedidoDetalhesComponent} from "./dashboard/pedido-detalhes/pedido-detalhes.component";
 
 export const APP_MODULE_ROUTES: Route[] = [
     {path: 'aplication', component: AplicationComponent,
@@ -31,9 +35,14 @@ export const APP_MODULE_ROUTES: Route[] = [
             {path: 'produto-detalhes/:id', component: ProdutoDetalhesComponent},
             {path: 'loja', component: LojaComponent},
             {path: 'venda', component: VendaComponent},
-            {path: 'venda-detalhes/:id', component: VendaDetalhesComponent}
-        ]},
-    {path: 'login', component: LoginComponent},
+            {path: 'venda-detalhes/:id', component: VendaDetalhesComponent},
+            {path: 'pedido-venda/:id', component: PedidoVendaComponent},
+            {path: 'pedido', component: PedidoComponent},
+            {path: 'pedido-detalhes/:id', component: PedidoDetalhesComponent}
+        ],canActivate: [
+        CanActivateViaAuthGuard
+    ]},
+    {path: '', component: LoginComponent},
     {path: '', redirectTo: 'login', pathMatch: 'full'}
 ]
 

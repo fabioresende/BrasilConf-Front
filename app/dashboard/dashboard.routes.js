@@ -11,6 +11,10 @@ var produto_component_1 = require("./produto/produto.component");
 var produto_detalhes_component_1 = require("./produto-detalhes/produto-detalhes.component");
 var loja_component_1 = require("./loja/loja.component");
 var venda_component_1 = require("./venda/venda.component");
+var venda_detalhes_component_1 = require("./venda-detalhes/venda-detalhes.component");
+var pedido_venda_component_1 = require("./pedido-venda/pedido-venda.component");
+var pedido_component_1 = require("./pedido/pedido.component");
+var pedido_detalhes_component_1 = require("./pedido-detalhes/pedido-detalhes.component");
 exports.MODULE_ROUTES = [];
 exports.MODULE_COMPONENTS = [
     home_component_1.HomeComponent,
@@ -24,6 +28,10 @@ exports.MODULE_COMPONENTS = [
     produto_component_1.ProdutoComponent,
     produto_detalhes_component_1.ProdutoDetalhesComponent,
     loja_component_1.LojaComponent,
-    venda_component_1.VendaComponent
+    venda_component_1.VendaComponent,
+    venda_detalhes_component_1.VendaDetalhesComponent,
+    pedido_venda_component_1.PedidoVendaComponent,
+    pedido_component_1.PedidoComponent,
+    pedido_detalhes_component_1.PedidoDetalhesComponent
 ];
 //# sourceMappingURL=dashboard.routes.js.map

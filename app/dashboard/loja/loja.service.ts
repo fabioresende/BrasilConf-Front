@@ -39,4 +39,11 @@ export class LojaService {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     }
+
+    getCep(cep:string) {
+        return this.http.get( "/cep/"+cep)
+            .toPromise()
+            .then(response => response.json())
+            .catch(response => response.json());
+    }
 }

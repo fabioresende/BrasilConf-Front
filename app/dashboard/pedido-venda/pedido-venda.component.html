@@ -1,0 +1,61 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="red">
+                        <button class="btn btn-float-right btn-tranparent" (click)="goBack()">
+                            <i data-notify="icon" class="material-icons">add</i>
+                            VOLTAR
+                        </button>
+                        <h4 class="title">Pedido</h4>
+                        <p class="category">Escolha a quantiade de produtos</p>
+                    </div>
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <thead class="text-danger">
+                            <tr>
+                                <th></th>
+                                <th>Produto</th>
+                                <th>Quantidade</th>
+                                <th>Preço</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="col-md-3"><img class='imagem-produto-pedido' src="{{produto.url_foto}}"></td>
+                                <td class="col-md-3">{{produto.nome}}</td>
+                                <td class="col-md-2">
+                                        <input type="number" [(ngModel)]="pedido.quantidade" (change)="changeValorTotal()"/>
+                                </td>
+                                <td class="col-md-2">R$ {{pedido.valor_total}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-success btn-sm btn-float-right" (click)="salvarPedido()">
+                            Salvar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-alert" *ngIf="cardMensagem">
+    <div class="card col-md-8">
+        <div [attr.class]="mensagem.success == 'Sucesso' ? 'modal-success card-header' : 'modal-danger card-header'">{{mensagem.success}}</div>
+        <div class="card-content">
+            <div class="row">
+                {{mensagem.msg}}
+            </div>
+            <div class="card-footer" *ngIf="cardMensagem">
+                <button class="btn btn-success pull-right" (click)="blurCardMensagem()">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sombra-modal" *ngIf="cardMensagem" (click)="blurCardMensagem()">
+
+</div>

@@ -14,6 +14,9 @@ import {ProdutoDetalhesComponent} from "./produto-detalhes/produto-detalhes.comp
 import {LojaComponent} from "./loja/loja.component";
 import {VendaComponent} from "./venda/venda.component";
 import {VendaDetalhesComponent} from "./venda-detalhes/venda-detalhes.component";
+import {PedidoVendaComponent} from "./pedido-venda/pedido-venda.component";
+import {PedidoComponent} from "./pedido/pedido.component";
+import {PedidoDetalhesComponent} from "./pedido-detalhes/pedido-detalhes.component";
 export const MODULE_ROUTES: Route[] = [
     //{path: 'aplication/home', component: HomeComponent},
 ]
@@ -31,5 +34,8 @@ export const MODULE_COMPONENTS = [
     ProdutoDetalhesComponent,
     LojaComponent,
     VendaComponent,
-    VendaDetalhesComponent
+    VendaDetalhesComponent,
+    PedidoVendaComponent,
+    PedidoComponent,
+    PedidoDetalhesComponent
 ]

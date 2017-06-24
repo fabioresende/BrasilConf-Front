@@ -24,6 +24,7 @@ var aplication_component_1 = require("./aplication/aplication.component");
 var app_routes_1 = require("./app.routes");
 var login_component_1 = require("./login/login.component");
 var forms_1 = require("@angular/forms");
+var canActiveViaAuthGuard_service_1 = require("./dashboard/autentication/canActiveViaAuthGuard.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -49,6 +50,7 @@ var AppModule = (function () {
             providers: [
                 { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
                 { provide: http_1.Http, useFactory: http_factory_1.httpFactory, deps: [http_1.XHRBackend, http_1.RequestOptions] },
+                canActiveViaAuthGuard_service_1.CanActivateViaAuthGuard
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

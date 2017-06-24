@@ -11,12 +11,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var sidebar_routes_config_1 = require('../.././sidebar/sidebar-routes.config');
 var common_1 = require('@angular/common');
+var Usuario_1 = require("../../dashboard/user/Usuario");
+var auth_service_1 = require("../../dashboard/autentication/auth.service");
+var router_1 = require("@angular/router");
 var NavbarComponent = (function () {
-    function NavbarComponent(location) {
+    function NavbarComponent(location, authService, router) {
+        this.authService = authService;
+        this.router = router;
         this.location = location;
+        this.usuario = new Usuario_1.Usuario();
     }
     NavbarComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.listTitles = sidebar_routes_config_1.ROUTES.filter(function (listTitle) { return listTitle; });
+        this.authService.getUsuarioLogado().then(function (usuario) {
+            _this.usuario = usuario;
+        });
     };
     NavbarComponent.prototype.getTitle = function () {
         var titlee = this.location.prepareExternalUrl(this.location.path());
@@ -30,13 +40,19 @@ var NavbarComponent = (function () {
         }
         return 'Dashboard';
     };
+    NavbarComponent.prototype.logout = function () {
+        this.authService.logout();
+        this.router.navigate(['/']);
+    };
     NavbarComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'navbar-cmp',
-            templateUrl: 'navbar.component.html'
+            templateUrl: 'navbar.component.html',
+            providers: [auth_service_1.AuthService],
+            styleUrls: ['navbar.component.css']
         }), 
-        __metadata('design:paramtypes', [common_1.Location])
+        __metadata('design:paramtypes', [common_1.Location, auth_service_1.AuthService, router_1.Router])
     ], NavbarComponent);
     return NavbarComponent;
 }());

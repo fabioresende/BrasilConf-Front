@@ -15,6 +15,7 @@ var Loja_1 = require("./Loja");
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
 var auth_service_1 = require('../autentication/auth.service');
+var Mensagem_1 = require("../Mensagem");
 var LojaComponent = (function () {
     function LojaComponent(lojaService, location) {
         this.lojaService = lojaService;
@@ -22,6 +23,8 @@ var LojaComponent = (function () {
         this.events = [];
         this.selected = [];
         this.selectedChange = new core_1.EventEmitter();
+        this.cardMensagem = false;
+        this.mensagem = new Mensagem_1.Mensagem();
         this.loja = new Loja_1.Loja();
         this.lojaSelecionado = 1;
     }
@@ -73,11 +76,34 @@ var LojaComponent = (function () {
         this.location.back();
     };
     LojaComponent.prototype.salvarLoja = function (loja, isValid) {
+        var _this = this;
         loja.id = this.loja.id;
         loja.areas = this.selected;
         if (isValid) {
-            this.lojaService.salvarLoja(loja);
+            this.lojaService.salvarLoja(loja).then(function (data) {
+                _this.mensagem = data;
+                _this.cardMensagem = true;
+            });
         }
+    };
+    LojaComponent.prototype.blurCardMensagem = function () {
+        this.cardMensagem = false;
+    };
+    LojaComponent.prototype.buscarCep = function () {
+        var _this = this;
+        this.lojaService.getCep(this.loja.cep).then(function (data) {
+            if (data.success == "Erro") {
+                _this.mensagem = data;
+                _this.cardMensagem = true;
+            }
+            else {
+                _this.cep = data;
+                _this.loja.estado = _this.cep.uf;
+                _this.loja.logradouro = _this.cep.logradouro;
+                _this.loja.tipo_logradouro = _this.cep.tipo_logradouro;
+                _this.loja.cidade = _this.cep.localidade;
+            }
+        });
     };
     __decorate([
         core_1.Output(), 

@@ -47,11 +47,17 @@ var FornecedorComponent = (function () {
         this.location.back();
     };
     FornecedorComponent.prototype.salvarFornecedor = function (fornecedor, isValid) {
+        var _this = this;
         fornecedor.id = this.fornecedor.id;
         if (isValid) {
-            console.log(fornecedor);
-            this.fornecedorService.salvarFornecedor(fornecedor);
+            this.fornecedorService.salvarFornecedor(fornecedor).then(function (data) {
+                _this.mensagem = data;
+                _this.cardMensagem = true;
+            });
         }
+    };
+    FornecedorComponent.prototype.blurCardMensagem = function () {
+        this.cardMensagem = false;
     };
     FornecedorComponent = __decorate([
         core_1.Component({

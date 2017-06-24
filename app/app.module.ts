@@ -17,6 +17,7 @@ import {AplicationComponent} from "./aplication/aplication.component";
 import {APP_MODULE_ROUTES} from "./app.routes";
 import {LoginComponent} from "./login/login.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CanActivateViaAuthGuard} from "./dashboard/autentication/canActiveViaAuthGuard.service";
 
 @NgModule({
     imports: [
@@ -39,6 +40,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         {provide: Http,useFactory: httpFactory,deps: [XHRBackend, RequestOptions]},
+        CanActivateViaAuthGuard
+
     ],
     bootstrap: [AppComponent]
 })

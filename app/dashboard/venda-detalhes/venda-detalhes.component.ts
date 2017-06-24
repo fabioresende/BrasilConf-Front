@@ -18,6 +18,7 @@ import {Departamento} from "../venda/Departamento";
 export class VendaDetalhesComponent implements OnInit {
     private produto : Produto;
     private produtoSelecionado;
+    private quantidade;
     constructor(
         private vendaService: VendaService,
         private router:Router,
@@ -40,6 +41,10 @@ export class VendaDetalhesComponent implements OnInit {
         var parametros = params.split("/");
         var parametro = parametros[3];
         return parametro;
+    }
+
+    comprar() {
+        this.router.navigate(['/aplication/pedido-venda',this.produto.id]);
     }
 
 }

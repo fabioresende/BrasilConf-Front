@@ -6,6 +6,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthService} from "./autentication/auth.service";
 import {AuthConfig, AuthHttp, JwtHelper, provideAuth} from "angular2-jwt";
+import {CanActivateViaAuthGuard} from "./autentication/canActiveViaAuthGuard.service";
 @NgModule({
     imports: [
         RouterModule.forChild(MODULE_ROUTES),

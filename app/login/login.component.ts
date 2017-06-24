@@ -4,6 +4,7 @@ import {AuthService} from "../dashboard/autentication/auth.service";
 import {Login} from "./Login";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Mensagem} from "../dashboard/Mensagem";
 
 @Component({
     selector: 'login',
@@ -17,12 +18,16 @@ export class LoginComponent implements OnInit {
     private login: Login;
     private formulario: FormGroup;
     private cardLogin: boolean;
+    private mensagem:Mensagem;
+    private cardMensagem: boolean;
 
     constructor(private authService: AuthService,
                 private location: Location,
                 private router: Router) {
         this.login = new Login();
         this.cardLogin = false;
+        this.cardMensagem = false;
+        this.mensagem = new Mensagem();
     };
 
     ngOnInit() {
@@ -34,17 +39,16 @@ export class LoginComponent implements OnInit {
 
     logar(login: Login, isValid: boolean): void {
         this.login = login;
-        if (isValid) {
            this.authService.login(login.usuario, login.senha).then((data) => {
-                    if (data.error) {
-                        console.log(data.error);
+                    if (data.success == 'false') {
+                        this.mensagem = data as Mensagem;
+                        this.cardMensagem = true;
                     }
                     else{
                         this.router.navigate(['aplication/home']);
                     }
                 }
             );
-        }
     }
 
     showCardLogin() {
@@ -53,5 +57,8 @@ export class LoginComponent implements OnInit {
 
     blurCardLogin() {
         this.cardLogin = false;
+    }
+    blurCardMensagem(){
+        this.cardMensagem = false;
     }
 }

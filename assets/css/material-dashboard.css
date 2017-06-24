@@ -2888,7 +2888,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   padding: 15px 0;
 }
 .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
-  background-color: #9c27b0;
+  background-color: #0d47a1;
   color: #FFFFFF;
   box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
 }
@@ -3264,11 +3264,11 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 .navbar.navbar-primary .dropdown-menu li > a:hover, .navbar.navbar-primary .dropdown-menu li > a:focus {
   color: #FFFFFF;
-  background-color: #9c27b0;
+  background-color: #0d47a1;
   box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
 }
 .navbar.navbar-primary .dropdown-menu .active > a {
-  background-color: #9c27b0;
+  background-color: #0d47a1;
   color: #ffffff;
   box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
 }
@@ -3639,7 +3639,7 @@ footer .btn {
 .dropdown-menu li a:hover,
 .dropdown-menu li a:focus,
 .dropdown-menu li a:active {
-  background-color: #9c27b0;
+  background-color: #0d47a1;
   color: #FFFFFF;
 }
 .dropdown-menu .divider {
@@ -3650,7 +3650,7 @@ footer .btn {
 .navbar .dropdown-menu li a:active, .navbar.navbar-default .dropdown-menu li a:hover,
 .navbar.navbar-default .dropdown-menu li a:focus,
 .navbar.navbar-default .dropdown-menu li a:active {
-  background-color: #9c27b0;
+  background-color: #0d47a1;
   color: #FFFFFF;
   box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
 }
@@ -3709,7 +3709,6 @@ footer .btn {
   margin: -20px 15px 0;
   border-radius: 3px;
   padding: 15px;
-  background-color: #999999;
 }
 .card .card-header .title {
   color: #FFFFFF;
@@ -5521,4 +5520,38 @@ footer .btn {
    background-color: rgba(255,255,255,0.3);
    border: 1px solid white;
 
+ }
+ .sombra-modal{
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   z-index: 3000;
+   top:0%;
+   bottom:0%;
+   right: 0%;
+   left:0%;
+   background-color: rgba(0,0,0,0.7);
+ }
+ .modal-alert{
+   width: 500px;
+   height: 500px;
+   position: absolute;
+   top:0%;
+   bottom:0%;
+   right: 0%;
+   left:0%;
+   margin: auto;
+   font-size: 20px;
+   z-index: 4000;
+ }
+
+ .modal-danger{
+   background-color: #ff211c;
+   color: white;
+ }
+
+
+ .modal-success{
+   background-color: #5da618;
+   color: white;
  }

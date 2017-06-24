@@ -34,26 +34,28 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group form-black ">
-                                <label class="control-label" for="usuario">Usuario</label>
-                                <input type="text" class="form-control" formControlName="usuario" id="usuario"
-                                       [ngModel]="login.usuario">
-                                <small [hidden]="formulario.controls.usuario.valid || (formulario.controls.usuario.pristine)"
-                                       class="text-danger">
-                                    Name is required (minimum 5 characters).
-                                </small>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+			                                <i class="material-icons">person</i>
+		                            </span>
+                                    <label class="control-label" for="usuario">Usuário</label>
+                                    <input type="text" class="form-control" formControlName="usuario" id="usuario"
+                                           [ngModel]="login.usuario">
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group form-black ">
-                                <label class="control-label" for="senha">Senha</label>
-                                <input type="text" class="form-control" formControlName="senha" id="senha"
-                                       [ngModel]="login.senha">
-                                <small [hidden]="formulario.controls.senha.valid || (formulario.controls.senha.pristine)"
-                                       class="text-danger">
-                                    Name is required (minimum 5 characters).
-                                </small>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+			                                <i class="material-icons">lock</i>
+		                            </span>
+                                    <label class="control-label" for="senha">Senha</label>
+                                    <input type="password" class="form-control" formControlName="senha" id="senha"
+                                           [ngModel]="login.senha">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -64,6 +66,22 @@
         </div>
     </div>
     <div class="sombra" *ngIf="cardLogin" (click)="blurCardLogin()">
+
+    </div>
+    <div class="modal-alert" *ngIf="cardMensagem">
+        <div class="card col-md-8">
+            <div class="card-header modal-danger">ERRO!</div>
+            <div class="card-content">
+                <div class="row">
+                    {{mensagem.msg}}
+                </div>
+                <div class="card-footer" *ngIf="cardMensagem">
+                    <button class="btn btn-success pull-right" (click)="blurCardMensagem()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sombra-modal" *ngIf="cardMensagem" (click)="blurCardMensagem()">
 
     </div>
 </div>

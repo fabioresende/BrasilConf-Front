@@ -5,6 +5,7 @@ import {UsuarioService} from '../user/user.service';
 import {Usuario} from "../user/Usuario";
 import {Location} from '@angular/common';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+import {Mensagem} from "../Mensagem";
 @Component({
     selector: 'usuario-detalhes',
     moduleId: module.id,
@@ -20,6 +21,8 @@ export class UsuarioDetalhesComponent implements OnInit {
     private descricaoTipoUsuario;
     private descricaoStatus;
     public events: any[] = [];
+    public mensagem:Mensagem;
+    public cardMensagem: boolean;
 
     constructor(private usuarioService: UsuarioService,
                 private route: ActivatedRoute,
@@ -28,6 +31,8 @@ export class UsuarioDetalhesComponent implements OnInit {
         this.usuario = null;
         this.usuarioSelecionado = this.routerParams(this.location.path());
         this.tiposUsuario;
+        this.cardMensagem = false;
+        this.mensagem = new Mensagem();
     };
 
     ngOnInit() {
@@ -59,7 +64,8 @@ export class UsuarioDetalhesComponent implements OnInit {
         usuario = this.setTipoUsuario(usuario);
         if (isValid) {
             this.usuarioService.salvarUsuario(usuario).then((data) => {
-
+                    this.mensagem = data;
+                    this.cardMensagem = true;
             });
         }
     }
@@ -81,12 +87,20 @@ export class UsuarioDetalhesComponent implements OnInit {
         usuario.id = this.usuario.id;
         usuario.id_usuarioadm = this.usuario.id_usuarioadm;
         usuario.id_fornecedor = this.usuario.id_fornecedor;
-        usuario.id_tipo_usuario = this.tiposUsuario.indexOf(usuario.id_tipo_usuario)+1;
-        if (usuario.status == "Ativo" ) {
-            usuario.status = 1;
+        if (usuario.id_tipo_usuario == "") {
+            usuario.id_tipo_usuario = this.usuario.id_tipo_usuario;
+        } else {
+            usuario.id_tipo_usuario = this.tiposUsuario.indexOf(usuario.id_tipo_usuario) + 1;
         }
-        else {
-            usuario.status = 1;
+        if(usuario.status == ""){
+            usuario.status = this.usuario.status;
+        } else{
+            if (usuario.status == "Ativo" ) {
+                usuario.status = 1;
+            }
+            else {
+                usuario.status = 0;
+            }
         }
         return usuario;
     }
@@ -95,6 +109,10 @@ export class UsuarioDetalhesComponent implements OnInit {
         var parametros = params.split("/");
         var parametro = parametros[3];
         return parametro;
+    }
+
+    blurCardMensagem(){
+        this.cardMensagem = false;
     }
 
 }

@@ -15,6 +15,7 @@ var user_service_1 = require('../user/user.service');
 var Usuario_1 = require("../user/Usuario");
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
+var Mensagem_1 = require("../Mensagem");
 var UsuarioDetalhesComponent = (function () {
     function UsuarioDetalhesComponent(usuarioService, route, location) {
         this.usuarioService = usuarioService;
@@ -24,6 +25,8 @@ var UsuarioDetalhesComponent = (function () {
         this.usuario = null;
         this.usuarioSelecionado = this.routerParams(this.location.path());
         this.tiposUsuario;
+        this.cardMensagem = false;
+        this.mensagem = new Mensagem_1.Mensagem();
     }
     ;
     UsuarioDetalhesComponent.prototype.ngOnInit = function () {
@@ -51,9 +54,12 @@ var UsuarioDetalhesComponent = (function () {
         this.location.back();
     };
     UsuarioDetalhesComponent.prototype.salvarUsuario = function (usuario, isValid) {
+        var _this = this;
         usuario = this.setTipoUsuario(usuario);
         if (isValid) {
             this.usuarioService.salvarUsuario(usuario).then(function (data) {
+                _this.mensagem = data;
+                _this.cardMensagem = true;
             });
         }
     };
@@ -74,12 +80,22 @@ var UsuarioDetalhesComponent = (function () {
         usuario.id = this.usuario.id;
         usuario.id_usuarioadm = this.usuario.id_usuarioadm;
         usuario.id_fornecedor = this.usuario.id_fornecedor;
-        usuario.id_tipo_usuario = this.tiposUsuario.indexOf(usuario.id_tipo_usuario) + 1;
-        if (usuario.status == "Ativo") {
-            usuario.status = 1;
+        if (usuario.id_tipo_usuario == "") {
+            usuario.id_tipo_usuario = this.usuario.id_tipo_usuario;
         }
         else {
-            usuario.status = 1;
+            usuario.id_tipo_usuario = this.tiposUsuario.indexOf(usuario.id_tipo_usuario) + 1;
+        }
+        if (usuario.status == "") {
+            usuario.status = this.usuario.status;
+        }
+        else {
+            if (usuario.status == "Ativo") {
+                usuario.status = 1;
+            }
+            else {
+                usuario.status = 0;
+            }
         }
         return usuario;
     };
@@ -87,6 +103,9 @@ var UsuarioDetalhesComponent = (function () {
         var parametros = params.split("/");
         var parametro = parametros[3];
         return parametro;
+    };
+    UsuarioDetalhesComponent.prototype.blurCardMensagem = function () {
+        this.cardMensagem = false;
     };
     UsuarioDetalhesComponent = __decorate([
         core_1.Component({

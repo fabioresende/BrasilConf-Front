@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {AuthHttp, JwtHelper, tokenNotExpired} from "angular2-jwt";
+import {Usuario} from "../user/Usuario";
 
 @Injectable()
 export class AuthService {
@@ -34,12 +35,12 @@ export class AuthService {
             )
     }
 
-    getUsuarioLogado() {
+    getUsuarioLogado(): Promise<Usuario>{
         return this.http.get('/auth/usuario')
             .toPromise()
             .then(
                 res => {
-                    return res.json()
+                    return res.json() as Usuario
                 }
             )
     }
@@ -67,8 +68,11 @@ export class AuthService {
         localStorage.removeItem('id_token');
     }
 
-    loggedIn() {
+    loggedIn(): boolean{
         var token = localStorage.getItem('id_token');
+        if (!token) {
+            return false;
+        }
         return !this.jwtHelper.isTokenExpired(token);
     }
 }

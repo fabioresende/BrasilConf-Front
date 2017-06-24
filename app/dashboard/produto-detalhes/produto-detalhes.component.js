@@ -55,9 +55,12 @@ var ProdutoDetalhesComponent = (function () {
         this.location.back();
     };
     ProdutoDetalhesComponent.prototype.salvarProduto = function (produto, isValid) {
+        var _this = this;
         produto = this.setDepartamento(produto);
         if (isValid) {
             this.produtoService.salvarProduto(produto).then(function (data) {
+                _this.mensagem = data;
+                _this.cardMensagem = true;
             });
         }
     };
@@ -100,6 +103,9 @@ var ProdutoDetalhesComponent = (function () {
         var parametros = params.split("/");
         var parametro = parametros[3];
         return parametro;
+    };
+    ProdutoDetalhesComponent.prototype.blurCardMensagem = function () {
+        this.cardMensagem = false;
     };
     ProdutoDetalhesComponent = __decorate([
         core_1.Component({

@@ -14,6 +14,7 @@ var auth_service_1 = require("../dashboard/autentication/auth.service");
 var Login_1 = require("./Login");
 var router_1 = require("@angular/router");
 var forms_1 = require("@angular/forms");
+var Mensagem_1 = require("../dashboard/Mensagem");
 var LoginComponent = (function () {
     function LoginComponent(authService, location, router) {
         this.authService = authService;
@@ -21,6 +22,8 @@ var LoginComponent = (function () {
         this.router = router;
         this.login = new Login_1.Login();
         this.cardLogin = false;
+        this.cardMensagem = false;
+        this.mensagem = new Mensagem_1.Mensagem();
     }
     ;
     LoginComponent.prototype.ngOnInit = function () {
@@ -32,22 +35,24 @@ var LoginComponent = (function () {
     LoginComponent.prototype.logar = function (login, isValid) {
         var _this = this;
         this.login = login;
-        if (isValid) {
-            this.authService.login(login.usuario, login.senha).then(function (data) {
-                if (data.error) {
-                    console.log(data.error);
-                }
-                else {
-                    _this.router.navigate(['aplication/home']);
-                }
-            });
-        }
+        this.authService.login(login.usuario, login.senha).then(function (data) {
+            if (data.success == 'false') {
+                _this.mensagem = data;
+                _this.cardMensagem = true;
+            }
+            else {
+                _this.router.navigate(['aplication/home']);
+            }
+        });
     };
     LoginComponent.prototype.showCardLogin = function () {
         this.cardLogin = true;
     };
     LoginComponent.prototype.blurCardLogin = function () {
         this.cardLogin = false;
+    };
+    LoginComponent.prototype.blurCardMensagem = function () {
+        this.cardMensagem = false;
     };
     LoginComponent = __decorate([
         core_1.Component({
