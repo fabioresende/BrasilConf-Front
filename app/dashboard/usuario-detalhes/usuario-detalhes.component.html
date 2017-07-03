@@ -1,7 +1,7 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" >
                 <div class="card">
                     <div class="card-header" data-background-color="red">
                         <button class="btn btn-float-right btn-tranparent" (click)="goBack()">
@@ -19,7 +19,7 @@
                                         <label class="control-label" for="nome">Nome</label>
                                         <input type="text" class="form-control"  formControlName="nome" id="nome" [ngModel]="usuario.nome">
                                         <small [hidden]="formulario.controls.nome.valid || (formulario.controls.nome.pristine)" class="text-danger">
-                                            Name is required (minimum 5 characters).
+                                            Nome inválido (minimo 8 characteres).
                                         </small>
                                     </div>
                                 </div>
@@ -27,12 +27,18 @@
                                     <div class="form-group form-black ">
                                         <label class="control-label">CPF</label>
                                         <input type="text" class="form-control" formControlName="cpf" [ngModel]="usuario.cpf">
+                                        <small [hidden]="formulario.controls.cpf.valid || (formulario.controls.cpf.pristine)" class="text-danger">
+                                            Cpf inválido (minimum 8 characters).
+                                        </small>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group form-black ">
                                         <label class="control-label">Telefone</label>
                                         <input type="text" class="form-control" formControlName="telefone" [ngModel]="usuario.telefone">
+                                        <small [hidden]="formulario.controls.telefone.valid || (formulario.controls.telefone.pristine)" class="text-danger">
+                                            Telefone inválido (minimum 9 characters).
+                                        </small>
                                     </div>
                                 </div>
                             </div>
@@ -43,17 +49,24 @@
                                         <label class="control-label">Usuario</label>
                                         <input type="text" class="form-control" formControlName="usuario" [ngModel]="usuario.usuario">
                                     </div>
+                                    <small [hidden]="formulario.controls.usuario.valid || (formulario.controls.usuario.pristine)" class="text-danger">
+                                        Usuário inválido (minimum 9 characters).
+                                    </small>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group form-black ">
                                         <label class="control-label">Senha</label>
                                         <input type="password" class="form-control" formControlName="senha" [ngModel]="usuario.senha">
+                                        <small [hidden]="formulario.controls.senha.valid || (formulario.controls.senha.pristine)" class="text-danger">
+                                            Senha inválida (minimum 8 characters).
+                                        </small>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group form-black ">
                                         <label for="selectStatus" class="control-label">Status</label>
                                         <select class="form-control" id="selectStatus" formControlName="status" [value]="descricaoStatus" >
+                                            <option></option>
                                             <option>Ativo</option>
                                             <option>Inativo</option>
                                         </select>
@@ -62,8 +75,9 @@
                                 <div class="col-md-2">
                                     <div class="form-group form-black ">
                                         <label for="selectTipoUsuario" class="control-label">Área</label>
-                                        <select class="form-control" id="selectTipoUsuario" formControlName="id_tipo_usuario" [value]="descricaoTipoUsuario" >
-                                            <option *ngFor="let tipoUsuario of tiposUsuario">{{tipoUsuario}}</option>
+                                        <select class="form-control" id="selectTipoUsuario" formControlName="id_tipo_usuario">
+                                            <option></option>
+                                            <option *ngFor="let tipoUsuario of tiposUsuario"  [selected]="tipoUsuario == descricaoTipoUsuario">{{tipoUsuario}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -74,24 +88,6 @@
                     </div>
                 </div>
             </div>
-            <!--<div class="col-md-4">-->
-            <!--<div class="card card-profile">-->
-            <!--<div class="card-avatar">-->
-            <!--<a href="#pablo">-->
-            <!--<img class="img" src="../assets/img/faces/marc.jpg" />-->
-            <!--</a>-->
-            <!--</div>-->
-
-            <!--<div class="content">-->
-            <!--<h6 class="category text-gray">CEO / Co-Founder</h6>-->
-            <!--<h4 class="card-title">Alec Thompson</h4>-->
-            <!--<p class="card-content">-->
-            <!--Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...-->
-            <!--</p>-->
-            <!--<a href="#pablo" class="btn btn-danger btn-round">Follow</a>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
         </div>
     </div>
 </div>

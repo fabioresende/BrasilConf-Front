@@ -11,48 +11,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require("@angular/http");
 require('rxjs/add/operator/toPromise');
-var LojaService = (function () {
-    function LojaService(http) {
+var RankingService = (function () {
+    function RankingService(http) {
         this.http = http;
     }
-    LojaService.prototype.getLoja = function () {
-        return this.http.get("/loja")
+    RankingService.prototype.getEstabelecimento = function () {
+        return this.http.get("/ranking/estabelecimento")
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(function (response) { return response.json(); });
     };
-    LojaService.prototype.getAreas = function () {
-        return this.http.get("/loja/areas")
-            .toPromise()
-            .then(function (response) { return response.json(); })
-            .catch();
-    };
-    LojaService.prototype.getAreasRelacionadas = function () {
-        return this.http.get("/loja/areas-relacionadas")
-            .toPromise()
-            .then(function (response) { return response.json(); })
-            .catch();
-    };
-    LojaService.prototype.salvarLoja = function (loja) {
-        return this.http.post("/loja/salvar", loja)
-            .toPromise()
-            .then(function (response) { return response.json(); });
-    };
-    LojaService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
-    };
-    LojaService.prototype.getCep = function (cep) {
-        return this.http.get("/cep/" + cep)
+    RankingService.prototype.getRanking = function () {
+        return this.http.get("/ranking")
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(function (response) { return response.json(); });
     };
-    LojaService = __decorate([
+    RankingService.prototype.getQuantidadeUsuarios = function () {
+        return this.http.get("/usuario/qtd-usuarios")
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(function (response) { return response.json(); });
+    };
+    RankingService.prototype.getQuantidadeProdutosMes = function () {
+        return this.http.get("/produtos-mes")
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(function (response) { return response.json(); });
+    };
+    RankingService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], LojaService);
-    return LojaService;
+    ], RankingService);
+    return RankingService;
 }());
-exports.LojaService = LojaService;
-//# sourceMappingURL=loja.service.js.map
+exports.RankingService = RankingService;
+//# sourceMappingURL=ranking.service.js.map
