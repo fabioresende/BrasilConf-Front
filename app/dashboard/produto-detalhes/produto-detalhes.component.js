@@ -17,15 +17,17 @@ var produto_service_1 = require("../produto/produto.service");
 var Produto_1 = require("../produto/Produto");
 var Fornecedor_1 = require("../fornecedor/Fornecedor");
 var ProdutoDetalhesComponent = (function () {
-    function ProdutoDetalhesComponent(produtoService, route, location) {
+    function ProdutoDetalhesComponent(produtoService, route, router, location) {
         this.produtoService = produtoService;
         this.route = route;
+        this.router = router;
         this.location = location;
         this.events = [];
         this.produto = new Produto_1.Produto();
         this.produto.fornecedor = new Fornecedor_1.Fornecedor();
         this.produtoSelecionado = this.routerParams(this.location.path());
         this.departamentos;
+        this.ehProdutoNovo = true;
     }
     ;
     ProdutoDetalhesComponent.prototype.ngOnInit = function () {
@@ -34,6 +36,7 @@ var ProdutoDetalhesComponent = (function () {
             var param = this.routerParams(this.location.path());
             this.produtoService.getProduto(param).then(function (produto) {
                 _this.produto = produto;
+                _this.ehProdutoNovo = false;
             });
         }
         this.formulario = new forms_1.FormGroup({
@@ -61,6 +64,7 @@ var ProdutoDetalhesComponent = (function () {
             this.produtoService.salvarProduto(produto).then(function (data) {
                 _this.mensagem = data;
                 _this.cardMensagem = true;
+                _this.ehProdutoNovo = false;
             });
         }
     };
@@ -84,7 +88,10 @@ var ProdutoDetalhesComponent = (function () {
             produto.id_departamento = this.produto.id_departamento;
         }
         else {
-            produto.id_departamento = this.departamentos.indexOf(produto.id_departamento) + 1;
+            var arrDesc = this.departamentos.map(function (departamento) {
+                return departamento.descricao;
+            });
+            produto.id_departamento = arrDesc.indexOf(produto.id_departamento) + 1;
         }
         if (produto.status == "") {
             produto.status = this.produto.status;
@@ -106,6 +113,7 @@ var ProdutoDetalhesComponent = (function () {
     };
     ProdutoDetalhesComponent.prototype.blurCardMensagem = function () {
         this.cardMensagem = false;
+        this.router.navigate(['/aplication/produto']);
     };
     ProdutoDetalhesComponent = __decorate([
         core_1.Component({
@@ -115,7 +123,7 @@ var ProdutoDetalhesComponent = (function () {
             styleUrls: ['produto-detalhes.component.css'],
             providers: [produto_service_1.ProdutoService]
         }), 
-        __metadata('design:paramtypes', [produto_service_1.ProdutoService, router_1.ActivatedRoute, common_1.Location])
+        __metadata('design:paramtypes', [produto_service_1.ProdutoService, router_1.ActivatedRoute, router_1.Router, common_1.Location])
     ], ProdutoDetalhesComponent);
     return ProdutoDetalhesComponent;
 }());

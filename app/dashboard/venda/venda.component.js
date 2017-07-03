@@ -12,32 +12,49 @@ var core_1 = require('@angular/core');
 var router_1 = require("@angular/router");
 var auth_service_1 = require("../autentication/auth.service");
 var venda_service_1 = require("./venda.service");
+var loja_service_1 = require("../loja/loja.service");
+var Mensagem_1 = require("../Mensagem");
 var VendaComponent = (function () {
-    function VendaComponent(vendaService, route, router, authService) {
+    function VendaComponent(vendaService, route, router, authService, lojaService) {
         this.vendaService = vendaService;
         this.route = route;
         this.router = router;
         this.authService = authService;
+        this.lojaService = lojaService;
+        this.cardMensagem = false;
+        this.mensagem = new Mensagem_1.Mensagem();
     }
     ;
     VendaComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.vendaService.getProdutos().then(function (produtos) {
-            _this.produtos = produtos;
+        this.lojaService.getLoja().then(function (data) {
+            if (data.success == false) {
+                _this.mensagem = data;
+                _this.cardMensagem = true;
+            }
+            else {
+                _this.vendaService.getProdutos().then(function (produtos) {
+                    _this.produtos = produtos;
+                });
+            }
         });
     };
     VendaComponent.prototype.compraProduto = function (idProduto) {
         this.router.navigate(['/aplication/venda-detalhes', idProduto]);
+    };
+    VendaComponent.prototype.blurCardMensagem = function () {
+        this.cardMensagem = false;
+        this.router.navigate(['/aplication/loja']);
     };
     VendaComponent = __decorate([
         core_1.Component({
             selector: 'venda-cmp',
             moduleId: module.id,
             templateUrl: 'venda.component.html',
-            providers: [venda_service_1.VendaService, auth_service_1.AuthService],
+            providers: [venda_service_1.VendaService, auth_service_1.AuthService, loja_service_1.LojaService],
             styleUrls: ['venda.component.css']
         }), 
-        __metadata('design:paramtypes', [venda_service_1.VendaService, router_1.ActivatedRoute, router_1.Router, auth_service_1.AuthService])
+        __metadata('design:paramtypes', [venda_service_1.VendaService, router_1.ActivatedRoute, router_1.Router, auth_service_1.AuthService, loja_service_1.LojaService])
     ], VendaComponent);
     return VendaComponent;
 }());

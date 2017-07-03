@@ -12,8 +12,8 @@ export class LojaService {
     getLoja(){
         return this.http.get("/loja")
             .toPromise()
-            .then(response => {return response.json() as Loja})
-            .catch();
+            .then(response => {return response.json()})
+            .catch(response => {return response.json()});
     }
 
     getAreas(){

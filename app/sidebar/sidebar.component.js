@@ -39,6 +39,7 @@ var SidebarComponent = (function () {
             moduleId: module.id,
             selector: 'sidebar-cmp',
             templateUrl: 'sidebar.component.html',
+            styleUrls: ['sidebar.component.css'],
             providers: [auth_service_1.AuthService]
         }), 
         __metadata('design:paramtypes', [auth_service_1.AuthService])

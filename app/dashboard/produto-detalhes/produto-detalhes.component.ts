@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, ViewContainerRef} from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import 'rxjs/add/operator/switchMap';
 import {Location} from '@angular/common';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
@@ -7,6 +7,7 @@ import {ProdutoService} from "../produto/produto.service";
 import {Produto} from "../produto/Produto";
 import {Fornecedor} from "../fornecedor/Fornecedor";
 import {Mensagem} from "../Mensagem";
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
     selector: 'produto-detalhes',
@@ -26,14 +27,16 @@ export class ProdutoDetalhesComponent implements OnInit {
     public events: any[] = [];
     public mensagem: Mensagem;
     public cardMensagem: boolean;
-
+    public ehProdutoNovo: boolean;
     constructor(private produtoService: ProdutoService,
                 private route: ActivatedRoute,
+                private router:Router,
                 private location: Location,) {
         this.produto = new Produto();
         this.produto.fornecedor = new Fornecedor();
         this.produtoSelecionado = this.routerParams(this.location.path());
         this.departamentos;
+        this.ehProdutoNovo = true;
     };
 
     ngOnInit() {
@@ -41,6 +44,7 @@ export class ProdutoDetalhesComponent implements OnInit {
             let param = this.routerParams(this.location.path());
             this.produtoService.getProduto(param).then((produto) => {
                 this.produto = produto;
+                this.ehProdutoNovo = false;
             });
         }
         this.formulario = new FormGroup({
@@ -69,6 +73,7 @@ export class ProdutoDetalhesComponent implements OnInit {
             this.produtoService.salvarProduto(produto).then((data) => {
                 this.mensagem = data;
                 this.cardMensagem = true;
+                this.ehProdutoNovo = false;
             });
         }
     }
@@ -92,7 +97,10 @@ export class ProdutoDetalhesComponent implements OnInit {
         if (produto.id_departamento == "") {
             produto.id_departamento = this.produto.id_departamento;
         } else {
-            produto.id_departamento = this.departamentos.indexOf(produto.id_departamento) + 1;
+            let arrDesc = this.departamentos.map(function(departamento) {
+                return departamento.descricao;
+            });
+            produto.id_departamento = arrDesc.indexOf(produto.id_departamento) + 1;
         }
         if (produto.status == "") {
             produto.status = this.produto.status;
@@ -114,5 +122,6 @@ export class ProdutoDetalhesComponent implements OnInit {
     }
     blurCardMensagem(){
         this.cardMensagem = false;
+        this.router.navigate(['/aplication/produto']);
     }
 }

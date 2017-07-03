@@ -1,16 +1,16 @@
 {
   "name": "material-dashboard-angular2",
   "version": "1.2.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/creativetimofficial/material-dashboard-angular.git"
+  },
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "lite": "lite-server",
     "tsc": "tsc",
     "tsc:w": "tsc -w"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/creativetimofficial/material-dashboard-angular.git"
   },
   "bugs": {
     "url": "https://github.com/creativetimofficial/material-dashboard-angular/issues"
@@ -36,7 +36,13 @@
     "reflect-metadata": "~0.1.8",
     "rxjs": "5.0.1",
     "systemjs": "~0.19.41",
-    "zone.js": "^0.7.2"
+    "zone.js": "^0.7.2",
+    "@google-cloud/debug-agent": "0.10.2",
+    "@google/cloud-errors": "0.1.1",
+    "@google/cloud-trace": "0.6.2",
+    "body-parser": "1.16.1",
+    "express": "4.14.1",
+    "googleapis": "16.1.0"
   },
   "devDependencies": {
     "@types/chartist": "~0.9.33",
@@ -46,5 +52,8 @@
     "concurrently": "~3.0.0",
     "lite-server": "~2.2.2",
     "typescript": "~2.0.3"
+  },
+  "engines": {
+    "node": "=6.10.0"
   }
 }

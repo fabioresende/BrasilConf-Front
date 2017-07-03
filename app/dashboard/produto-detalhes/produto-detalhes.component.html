@@ -1,7 +1,7 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8" [attr.class]="ehProdutoNovo == true ? 'col-md-12' : 'col-md-8'">
                 <div class="card">
                     <div class="card-header" data-background-color="red">
                         <h4 class="title">Produto</h4>
@@ -23,7 +23,8 @@
                                     <div class="form-group form-black ">
                                         <label for="selectDepartamento" class="control-label">Departamento</label>
                                         <select class="form-control" id="selectDepartamento" formControlName="id_departamento">
-                                            <option *ngFor="let departamento of departamentos" [selected]="produto.id_departamento" [ngValue]="produto.id_departamento">{{departamento.descricao}}</option>
+                                            <option></option>
+                                            <option *ngFor="let departamento of departamentos" [selected]="produto.id_departamento == departamento.id">{{departamento.descricao}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -87,8 +88,8 @@
                                     <div class="form-group form-black ">
                                         <label for="selectStatus" class="control-label">Status</label>
                                         <select class="form-control" id="selectStatus" formControlName="status">
-                                            <option >Inativo</option>
-                                            <option [selected]="produto.status">Ativo</option>
+                                            <option [selected]="produto.status == 0">Inativo</option>
+                                            <option [selected]="produto.status == 1">Ativo</option>
                                         </select>
                                     </div>
                                 </div>
@@ -99,7 +100,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 ct-chart-line">
+            <div class="col-md-4 ct-chart-line" *ngIf="ehProdutoNovo == false">
                 <div class="card card-profile">
                     <div class="card-header row card-header-primary">
                         <div class="col-md-3">

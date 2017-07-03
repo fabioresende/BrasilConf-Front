@@ -40,4 +40,10 @@ export class PedidoService {
             .then(response => response.json() as Mensagem);
     }
 
+    public getPedidosPendentes(): Promise<Pedido[]>{
+        return this.http.get("/pedido-pendentes")
+            .toPromise()
+            .then(response => response.json() as Pedido[]);
+    }
+
 }
