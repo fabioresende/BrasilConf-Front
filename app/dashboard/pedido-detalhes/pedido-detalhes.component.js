@@ -52,14 +52,20 @@ var PedidoDetalhesComponent = (function () {
         var _this = this;
         this.pedidoService.confirmarPedido(this.pedido).then(function (data) {
             _this.mensagem = data;
-            _this.cardMensagem = true;
+            $("#modal").addClass("modal-sombra");
+            setTimeout(function () {
+                $("#modal").addClass("in");
+            }, 100);
         });
     };
     PedidoDetalhesComponent.prototype.finalizarPedido = function () {
         var _this = this;
         this.pedidoService.finalizarPedido(this.pedido).then(function (data) {
             _this.mensagem = data;
-            _this.cardMensagem = true;
+            $("#modal").addClass("modal-sombra");
+            setTimeout(function () {
+                $("#modal").addClass("in");
+            }, 100);
         });
     };
     PedidoDetalhesComponent.prototype.routerParams = function (params) {
@@ -68,7 +74,11 @@ var PedidoDetalhesComponent = (function () {
         return parametro;
     };
     PedidoDetalhesComponent.prototype.blurCardMensagem = function () {
-        this.cardMensagem = false;
+        this.mensagem.success = '';
+        $("#modal").removeClass("in");
+        setTimeout(function () {
+            $("#modal").removeClass("modal-sombra");
+        }, 2000);
     };
     PedidoDetalhesComponent = __decorate([
         core_1.Component({

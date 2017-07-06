@@ -16,6 +16,7 @@ var forms_1 = require('@angular/forms');
 var produto_service_1 = require("../produto/produto.service");
 var Produto_1 = require("../produto/Produto");
 var Fornecedor_1 = require("../fornecedor/Fornecedor");
+var Mensagem_1 = require("../Mensagem");
 var ProdutoDetalhesComponent = (function () {
     function ProdutoDetalhesComponent(produtoService, route, router, location) {
         this.produtoService = produtoService;
@@ -28,6 +29,7 @@ var ProdutoDetalhesComponent = (function () {
         this.produtoSelecionado = this.routerParams(this.location.path());
         this.departamentos;
         this.ehProdutoNovo = true;
+        this.mensagem = new Mensagem_1.Mensagem();
     }
     ;
     ProdutoDetalhesComponent.prototype.ngOnInit = function () {
@@ -63,7 +65,10 @@ var ProdutoDetalhesComponent = (function () {
         if (isValid) {
             this.produtoService.salvarProduto(produto).then(function (data) {
                 _this.mensagem = data;
-                _this.cardMensagem = true;
+                $("#modal").addClass("modal-sombra");
+                setTimeout(function () {
+                    $("#modal").addClass("in");
+                }, 100);
                 _this.ehProdutoNovo = false;
             });
         }
@@ -112,7 +117,11 @@ var ProdutoDetalhesComponent = (function () {
         return parametro;
     };
     ProdutoDetalhesComponent.prototype.blurCardMensagem = function () {
-        this.cardMensagem = false;
+        this.mensagem.success = '';
+        $("#modal").removeClass("in");
+        setTimeout(function () {
+            $("#modal").removeClass("modal-sombra");
+        }, 2000);
         this.router.navigate(['/aplication/produto']);
     };
     ProdutoDetalhesComponent = __decorate([

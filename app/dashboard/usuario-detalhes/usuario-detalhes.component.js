@@ -59,7 +59,10 @@ var UsuarioDetalhesComponent = (function () {
         if (isValid) {
             this.usuarioService.salvarUsuario(usuario).then(function (data) {
                 _this.mensagem = data;
-                _this.cardMensagem = true;
+                $("#modal").addClass("modal-sombra");
+                setTimeout(function () {
+                    $("#modal").addClass("in");
+                }, 100);
             });
         }
     };
@@ -105,7 +108,11 @@ var UsuarioDetalhesComponent = (function () {
         return parametro;
     };
     UsuarioDetalhesComponent.prototype.blurCardMensagem = function () {
-        this.cardMensagem = false;
+        this.mensagem.success = '';
+        $("#modal").removeClass("in");
+        setTimeout(function () {
+            $("#modal").removeClass("modal-sombra");
+        }, 2000);
     };
     UsuarioDetalhesComponent = __decorate([
         core_1.Component({

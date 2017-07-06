@@ -42,7 +42,10 @@ export class LoginComponent implements OnInit {
            this.authService.login(login.usuario, login.senha).then((data) => {
                     if (data.success == 'false') {
                         this.mensagem = data as Mensagem;
-                        this.cardMensagem = true;
+                        $( "#modal" ).addClass( "modal-sombra" );
+                        setTimeout(function () {
+                            $( "#modal" ).addClass( "in" );
+                        },100);
                     }
                     else{
                         this.router.navigate(['aplication/home']);
@@ -59,6 +62,10 @@ export class LoginComponent implements OnInit {
         this.cardLogin = false;
     }
     blurCardMensagem(){
-        this.cardMensagem = false;
+        this.mensagem.success = '';
+        $( "#modal" ).removeClass( "in" );
+        setTimeout(function () {
+            $( "#modal" ).removeClass( "modal-sombra" );
+        },2000)
     }
 }

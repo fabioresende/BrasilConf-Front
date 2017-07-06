@@ -15,26 +15,24 @@ declare var $: any;
 
 export class SidebarComponent implements OnInit {
     public menuItems: any[];
-    private usuario: Usuario;
+    private infoUsuario;
 
     constructor(private authService: AuthService) {
-        this.usuario = new Usuario();
         this.menuItems = new Array();
     };
 
     ngOnInit() {
-        this.authService.getUsuarioLogado().then((usuario) => {
-            this.usuario = usuario;
-            this.menuItems = ROUTES.filter(mostrarMenu(this.usuario));
+            this.infoUsuario = this.authService.useJwtHelper();
+            this.menuItems = ROUTES.filter(mostrarMenu(this.infoUsuario));
+            console.log(this.infoUsuario);
             function mostrarMenu(usuario) {
                 return function (menuItem) {
-                    if ($.inArray(usuario.tipo_empresa.toString(),menuItem.permissao) != -1) {
+                    if ($.inArray(usuario.estabelecimento,menuItem.permissao) != -1) {
                         return menuItem;
                     }
                 }
             }
             $.getScript('../../assets/js/sidebar-moving-tab.js');
-        });
     }
 
 }

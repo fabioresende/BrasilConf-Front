@@ -48,7 +48,11 @@ export class LojaComponent implements OnInit {
     ngOnInit() {
         this.lojaService.getLoja().then((data)=>{
             this.loja = data;
-            if (data) {
+            if (data.message) {
+                this.lojaService.getAreas().then((data)=>{
+                    this.areas = data;
+                });
+            } else{
                 this.lojaService.getAreasRelacionadas().then((data)=>{
                     this.areas = data;
                     this.areas.forEach(area => {
@@ -56,10 +60,6 @@ export class LojaComponent implements OnInit {
                             this.selected.push(area.id);
                         }
                     })
-                });
-            } else{
-                this.lojaService.getAreas().then((data)=>{
-                    this.areas = data;
                 });
             }
         });
@@ -89,13 +89,20 @@ export class LojaComponent implements OnInit {
         if (isValid) {
             this.lojaService.salvarLoja(loja).then((data) => {
                 this.mensagem = data;
-                this.cardMensagem = true;
+                $( "#modal" ).addClass( "modal-sombra" );
+                setTimeout(function () {
+                    $( "#modal" ).addClass( "in" );
+                },100);
             });
         }
     }
 
     blurCardMensagem(){
-        this.cardMensagem = false;
+        this.mensagem.success = '';
+        $( "#modal" ).removeClass( "in" );
+        setTimeout(function () {
+            $( "#modal" ).removeClass( "modal-sombra" );
+        },2000);
     }
 
 
@@ -103,7 +110,10 @@ export class LojaComponent implements OnInit {
         this.lojaService.getCep(this.loja.cep).then((data)=>{
             if (data.success == "Erro") {
                 this.mensagem = data;
-                this.cardMensagem = true;
+                $( "#modal" ).addClass( "modal-sombra" );
+                setTimeout(function () {
+                    $( "#modal" ).addClass( "in" );
+                },100);
             } else {
                 this.cep = data;
                 this.loja.estado = this.cep.uf;

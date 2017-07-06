@@ -33,7 +33,10 @@ export class VendaComponent implements OnInit {
         this.lojaService.getLoja().then( (data) => {
             if (data.success == false) {
                 this.mensagem = data;
-                this.cardMensagem = true;
+                $( "#modal" ).addClass( "modal-sombra" );
+                setTimeout(function () {
+                    $( "#modal" ).addClass( "in" );
+                },100);
             } else{
                 this.vendaService.getProdutos().then((produtos) =>{
                     this.produtos = produtos;
@@ -46,7 +49,10 @@ export class VendaComponent implements OnInit {
     }
 
     blurCardMensagem(){
-        this.cardMensagem = false;
-        this.router.navigate(['/aplication/loja']);
+        this.mensagem.success = '';
+        $( "#modal" ).removeClass( "in" );
+        setTimeout(function () {
+            $( "#modal" ).removeClass( "modal-sombra" );
+        },2000);
     }
 }

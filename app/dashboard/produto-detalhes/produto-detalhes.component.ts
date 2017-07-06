@@ -37,6 +37,7 @@ export class ProdutoDetalhesComponent implements OnInit {
         this.produtoSelecionado = this.routerParams(this.location.path());
         this.departamentos;
         this.ehProdutoNovo = true;
+        this.mensagem = new Mensagem();
     };
 
     ngOnInit() {
@@ -72,7 +73,10 @@ export class ProdutoDetalhesComponent implements OnInit {
         if (isValid) {
             this.produtoService.salvarProduto(produto).then((data) => {
                 this.mensagem = data;
-                this.cardMensagem = true;
+                $( "#modal" ).addClass( "modal-sombra" );
+                setTimeout(function () {
+                    $( "#modal" ).addClass( "in" );
+                },100);
                 this.ehProdutoNovo = false;
             });
         }
@@ -121,7 +125,11 @@ export class ProdutoDetalhesComponent implements OnInit {
         return parametro;
     }
     blurCardMensagem(){
-        this.cardMensagem = false;
+        this.mensagem.success = '';
+        $( "#modal" ).removeClass( "in" );
+        setTimeout(function () {
+            $( "#modal" ).removeClass( "modal-sombra" );
+        },2000);
         this.router.navigate(['/aplication/produto']);
     }
 }

@@ -154,19 +154,19 @@
         </div>
     </div>
 </div>
-<div class="modal-alert" *ngIf="cardMensagem">
-    <div class="card col-md-8">
-        <div [attr.class]="mensagem.success == 'Sucesso' ? 'modal-success card-header' : 'modal-danger card-header'">{{mensagem.success}}</div>
-        <div class="card-content">
-            <div class="row">
-                {{mensagem.msg}}
+<div id="modal" class='modal fade' tabindex="-1" role="dialog" (click)="blurCardMensagem()">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div [attr.class]="mensagem.success == 'Sucesso' ? 'modal-success modal-header' : 'modal-danger modal-header'">
+                <button type="button" class="close txt-white" data-dismiss="modal" aria-label="Close" (click)="blurCardMensagem()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{mensagem.success}}</h4>
             </div>
-            <div class="card-footer" *ngIf="cardMensagem">
-                <button class="btn btn-success pull-right" (click)="blurCardMensagem()">OK</button>
+            <div class="modal-body">
+                <p>{{mensagem.msg}}</p>
             </div>
-        </div>
-    </div>
-</div>
-<div class="sombra-modal" *ngIf="cardMensagem" (click)="blurCardMensagem()">
-
-</div>
+            <div class="modal-footer">
+                <button type="button" class="btn modal-success" (click)="blurCardMensagem()">OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

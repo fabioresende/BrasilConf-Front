@@ -28,6 +28,8 @@ var AuthService = (function () {
             localStorage.setItem('id_token', res.json().access_token);
             localStorage.setItem('token_type', res.json().token_type);
             localStorage.setItem('expires_in', res.json().expires_in);
+            localStorage.setItem('estabelecimento', res.json().estabelecimento);
+            localStorage.setItem('nome_usuario', res.json().nome_usuario);
             return res.json();
         })
             .catch(function (res) {
@@ -50,9 +52,12 @@ var AuthService = (function () {
         var info = {
             'decoded': this.jwtHelper.decodeToken(token),
             'expiration_date': this.jwtHelper.getTokenExpirationDate(token),
-            'is_expired': this.jwtHelper.isTokenExpired(token)
+            'is_expired': this.jwtHelper.isTokenExpired(token),
+            'estabelecimento': localStorage.getItem('estabelecimento'),
+            'nome_usuario': localStorage.getItem('nome_usuario')
         };
         console.log(info);
+        return info;
     };
     AuthService.prototype.logout = function () {
         localStorage.removeItem('id_token');

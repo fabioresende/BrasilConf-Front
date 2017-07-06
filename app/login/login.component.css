@@ -13,16 +13,24 @@
     border: 1px solid white;
 
 }
+.container-white{
+    background-color: white;
+}
+.background-image{
+    background: url("../../assets/img/fundo.jpg") no-repeat fixed;
+}
 .btn-logo{
     width: 160px;
     height: 50px;
 }
 .rodape{
-    color: gray;
+    color: white;
     font-size: 15px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: black;
 }
 .container-rodape{
     background-color: #0d47a1;
@@ -46,6 +54,10 @@
 .orange{
     background-color: orange;
 }
+.padding{
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
 .card-center{
     width: 400px;
     height: 400px;
@@ -63,4 +75,22 @@
     position: absolute;
     z-index: 2000;
     background-color: rgba(0,0,0,0.7);
+}
+.text-white{
+    color: white;
+}
+.border-circle{
+    border: 2px solid rgb(38,33,97);
+    color: rgb(38,33,97);
+    width: 55px;
+    margin: auto;
+    border-radius: 100px;
+    padding: 10px;
+}
+.padding-section-contact{
+    padding-top: 80px;
+    padding-bottom: 30px;
+}
+.padding-txt-contact{
+    padding: 20px 25px 50px;
 }

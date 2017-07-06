@@ -1,2 +1,2 @@
-declare function initDemo():void;
+declare function initDemo(graficos):void;
 export = initDemo;

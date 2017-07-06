@@ -19,7 +19,12 @@ var RankingService = (function () {
         return this.http.get("/ranking/estabelecimento")
             .toPromise()
             .then(function (response) { return response.json(); })
-            .catch(function (response) { return response.json(); });
+            .catch(function (response) {
+            return {
+                'msg': 'Você não possui seu estabelecimento cadastrado, convidamos você a cadastra-lo no sistema',
+                'success': 'Bem vindo!'
+            };
+        });
     };
     RankingService.prototype.getRanking = function () {
         return this.http.get("/ranking")
@@ -33,11 +38,35 @@ var RankingService = (function () {
             .then(function (response) { return response.json(); })
             .catch(function (response) { return response.json(); });
     };
-    RankingService.prototype.getQuantidadeProdutosMes = function () {
-        return this.http.get("/produtos-mes")
+    RankingService.prototype.getGraficos = function () {
+        return this.http.get("/ranking/historico")
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(function (response) { return response.json(); });
+    };
+    RankingService.prototype.getPossuiEstabelecimento = function (tipo_empresa) {
+        if (tipo_empresa == 2) {
+            return this.http.get("/loja")
+                .toPromise()
+                .then(function (response) { return response.json(); })
+                .catch(function (response) {
+                return {
+                    'msg': 'Você não possui seu estabelecimento cadastrado, convidamos você a cadastra-lo no sistema',
+                    'success': 'Bem vindo!'
+                };
+            });
+        }
+        else {
+            return this.http.get("/fornecedor")
+                .toPromise()
+                .then(function (response) { return response.json(); })
+                .catch(function (response) {
+                return {
+                    'msg': 'Você não possui seu estabelecimento cadastrado, convidamos você a cadastra-lo no sistema',
+                    'success': 'Bem vindo!'
+                };
+            });
+        }
     };
     RankingService = __decorate([
         core_1.Injectable(), 

@@ -15,6 +15,7 @@ var Fornecedor_1 = require("./Fornecedor");
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
 var auth_service_1 = require('../autentication/auth.service');
+var Mensagem_1 = require("../Mensagem");
 var FornecedorComponent = (function () {
     function FornecedorComponent(fornecedorService, location) {
         this.fornecedorService = fornecedorService;
@@ -22,6 +23,7 @@ var FornecedorComponent = (function () {
         this.events = [];
         this.fornecedor = new Fornecedor_1.Fornecedor();
         this.fornecedorSelecionado = 1;
+        this.mensagem = new Mensagem_1.Mensagem();
     }
     ;
     FornecedorComponent.prototype.ngOnInit = function () {
@@ -52,12 +54,19 @@ var FornecedorComponent = (function () {
         if (isValid) {
             this.fornecedorService.salvarFornecedor(fornecedor).then(function (data) {
                 _this.mensagem = data;
-                _this.cardMensagem = true;
+                $("#modal").addClass("modal-sombra");
+                setTimeout(function () {
+                    $("#modal").addClass("in");
+                }, 100);
             });
         }
     };
     FornecedorComponent.prototype.blurCardMensagem = function () {
-        this.cardMensagem = false;
+        this.mensagem.success = '';
+        $("#modal").removeClass("in");
+        setTimeout(function () {
+            $("#modal").removeClass("modal-sombra");
+        }, 2000);
     };
     FornecedorComponent = __decorate([
         core_1.Component({

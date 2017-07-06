@@ -38,7 +38,10 @@ var LoginComponent = (function () {
         this.authService.login(login.usuario, login.senha).then(function (data) {
             if (data.success == 'false') {
                 _this.mensagem = data;
-                _this.cardMensagem = true;
+                $("#modal").addClass("modal-sombra");
+                setTimeout(function () {
+                    $("#modal").addClass("in");
+                }, 100);
             }
             else {
                 _this.router.navigate(['aplication/home']);
@@ -52,7 +55,11 @@ var LoginComponent = (function () {
         this.cardLogin = false;
     };
     LoginComponent.prototype.blurCardMensagem = function () {
-        this.cardMensagem = false;
+        this.mensagem.success = '';
+        $("#modal").removeClass("in");
+        setTimeout(function () {
+            $("#modal").removeClass("modal-sombra");
+        }, 2000);
     };
     LoginComponent = __decorate([
         core_1.Component({

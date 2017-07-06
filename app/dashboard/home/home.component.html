@@ -69,8 +69,8 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-4">
+            <div class="row center-block">
+                <div class="col-md-4" *ngIf="infoUsuario.estabelecimento == 1">
                     <div class="card" >
                         <div class="card-header card-chart" data-background-color="green">
                             <div class="ct-chart" id="dailySalesChart"></div>
@@ -127,8 +127,8 @@
                 <div class="col-lg-6 col-md-12">
                     <div class="card" >
                         <div class="card-header" data-background-color="orange">
-                            <h4 class="title">Employees Stats</h4>
-                            <p class="category">New employees on 15th September, 2016</p>
+                            <h4 class="title">Pedidos Pendentes</h4>
+                            <p class="category">Estes são os seus pedidos pendentes</p>
                         </div>
                         <div class="card-content table-responsive">
                             <table class="table">
@@ -179,3 +179,19 @@
             </div>
         </div>
 </div>
+<div id="modal" class='modal fade' tabindex="-1" role="dialog" (click)="blurCardMensagem()">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-success">
+                <button type="button" class="close txt-white" data-dismiss="modal" aria-label="Close" (click)="blurCardMensagem()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{mensagem.success}}</h4>
+            </div>
+            <div class="modal-body">
+                <p>{{mensagem.msg}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn modal-success" (click)="blurCardMensagem()">OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

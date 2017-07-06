@@ -41,7 +41,12 @@ var LojaComponent = (function () {
         var _this = this;
         this.lojaService.getLoja().then(function (data) {
             _this.loja = data;
-            if (data) {
+            if (data.message) {
+                _this.lojaService.getAreas().then(function (data) {
+                    _this.areas = data;
+                });
+            }
+            else {
                 _this.lojaService.getAreasRelacionadas().then(function (data) {
                     _this.areas = data;
                     _this.areas.forEach(function (area) {
@@ -49,11 +54,6 @@ var LojaComponent = (function () {
                             _this.selected.push(area.id);
                         }
                     });
-                });
-            }
-            else {
-                _this.lojaService.getAreas().then(function (data) {
-                    _this.areas = data;
                 });
             }
         });
@@ -82,19 +82,29 @@ var LojaComponent = (function () {
         if (isValid) {
             this.lojaService.salvarLoja(loja).then(function (data) {
                 _this.mensagem = data;
-                _this.cardMensagem = true;
+                $("#modal").addClass("modal-sombra");
+                setTimeout(function () {
+                    $("#modal").addClass("in");
+                }, 100);
             });
         }
     };
     LojaComponent.prototype.blurCardMensagem = function () {
-        this.cardMensagem = false;
+        this.mensagem.success = '';
+        $("#modal").removeClass("in");
+        setTimeout(function () {
+            $("#modal").removeClass("modal-sombra");
+        }, 2000);
     };
     LojaComponent.prototype.buscarCep = function () {
         var _this = this;
         this.lojaService.getCep(this.loja.cep).then(function (data) {
             if (data.success == "Erro") {
                 _this.mensagem = data;
-                _this.cardMensagem = true;
+                $("#modal").addClass("modal-sombra");
+                setTimeout(function () {
+                    $("#modal").addClass("in");
+                }, 100);
             }
             else {
                 _this.cep = data;

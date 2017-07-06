@@ -50,7 +50,10 @@ var PedidoVendaComponent = (function () {
         var _this = this;
         this.pedidoService.salvarPedido(this.pedido).then(function (data) {
             _this.mensagem = data;
-            _this.cardMensagem = true;
+            $("#modal").addClass("modal-sombra");
+            setTimeout(function () {
+                $("#modal").addClass("in");
+            }, 100);
         });
     };
     PedidoVendaComponent.prototype.changeValorTotal = function () {
@@ -62,7 +65,11 @@ var PedidoVendaComponent = (function () {
         return parametro;
     };
     PedidoVendaComponent.prototype.blurCardMensagem = function () {
-        this.cardMensagem = false;
+        this.mensagem.success = '';
+        $("#modal").removeClass("in");
+        setTimeout(function () {
+            $("#modal").removeClass("modal-sombra");
+        }, 2000);
     };
     PedidoVendaComponent = __decorate([
         core_1.Component({

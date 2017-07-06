@@ -30,7 +30,10 @@ var VendaComponent = (function () {
         this.lojaService.getLoja().then(function (data) {
             if (data.success == false) {
                 _this.mensagem = data;
-                _this.cardMensagem = true;
+                $("#modal").addClass("modal-sombra");
+                setTimeout(function () {
+                    $("#modal").addClass("in");
+                }, 100);
             }
             else {
                 _this.vendaService.getProdutos().then(function (produtos) {
@@ -43,8 +46,11 @@ var VendaComponent = (function () {
         this.router.navigate(['/aplication/venda-detalhes', idProduto]);
     };
     VendaComponent.prototype.blurCardMensagem = function () {
-        this.cardMensagem = false;
-        this.router.navigate(['/aplication/loja']);
+        this.mensagem.success = '';
+        $("#modal").removeClass("in");
+        setTimeout(function () {
+            $("#modal").removeClass("modal-sombra");
+        }, 2000);
     };
     VendaComponent = __decorate([
         core_1.Component({
